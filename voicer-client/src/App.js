@@ -7,13 +7,14 @@ import Login from './components/Login/Login';
 import Register from './components/Register';
 // import MainApp from './components/MainApp';
 import PrivateRoute from './components/Login/PrivateRoute';
+import OnboardingView from './views/OnboardingView';
 
 class App extends Component {
   render() {
     return (
       <Router>
         {/* <Route exact path="/" component={Home} /> */}
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login" component={OnboardingView} />
         <Route exact path="/register" component={Register} />
         {/* <PrivateRoute exact path="/voicer" component={MainApp} /> */}
       </Router>

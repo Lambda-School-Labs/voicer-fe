@@ -1,9 +1,12 @@
 import React from 'react';
+import Login from '../components/Login/Login';
+import Register from '../components/Register';
 
 const OnboardingView = (props) => {
     return (
     <div>
-        <h1>OnboardingView</h1>
+        <Login />
+        <Register />
     </div>
     );
 }
