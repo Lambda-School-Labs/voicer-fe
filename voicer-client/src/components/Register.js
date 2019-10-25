@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { register, login } from '../actions';
-import './Register.css';
+// import './Register.css';
 
 class Register extends Component {
     state = {
