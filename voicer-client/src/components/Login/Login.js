@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions';
+// import { login } from '../../actions';
 
 class Login extends Component {
     state = {
@@ -64,11 +64,11 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-    loggingIn: state.loginReducer.logginIn,
-    id: state.loginReducer.id
+    // loggingIn: state.loginReducer.logginIn,
+    // id: state.loginReducer.id
 })
 
 export default connect(
     mapStateToProps,
-    { login }
+    { }
 )(Login)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { register, login } from '../actions';
-
+// import { register, login } from '../actions';
 import './Register.css';
 
 class Register extends Component {
@@ -104,10 +103,10 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-    id: state.registerReducer.id
+    // id: state.registerReducer.id
 });
 
 export default connect(
     mapStateToProps,
-    { register, login }
+    { }
 )(Register);
