@@ -20,18 +20,12 @@ const OnboardingView = () => {
                         <CardBody>
                             <Nav tabs>
                                 <NavItem>
-                                    <NavLink
-                                    className={classnames({ active: activeTab === '1' })}
-                                    onClick={() => { toggle('1'); }}
-                                    >
+                                    <NavLink className={classnames({ active: activeTab === '1' })} onClick={() => { toggle('1'); }}>
                                         Login
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink
-                                    className={classnames({ active: activeTab === '2' })}
-                                    onClick={() => { toggle('2'); }}
-                                    >
+                                    <NavLink className={classnames({ active: activeTab === '2' })} onClick={() => { toggle('2'); }}>
                                         Register
                                     </NavLink>
                                 </NavItem>
