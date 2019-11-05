@@ -2,21 +2,53 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.TalentNavigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.TalentNavigationLinks {
+  display: flex;
+  flex-direction: row;
+}
+
+.TalentNavigationLinks a {
+  margin-left: 100px;
+}
+
+.PostJob {
+  margin: 50px auto;
+  width: 600px;
+}
+
+.PostJob h1 {
+  text-align: center;
+}
+
+.PostJob Form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
 }
 
-.App-link {
-  color: #09d3ac;
+.PostJob Button {
+  margin-top: 20px;
+}
+
+
+.choice {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    border: 1px solid gray;
+    padding: 2rem;
+}
+
+.welcome-title {
+    text-align: center;
+    margin: 2rem auto;
 }
