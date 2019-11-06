@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Input, Button, Label } from 'reactstrap';
 import { login } from '../../actions/login';
 import NavBar from '../Home/NavBar';
+import jwt from 'jsonwebtoken';
 import './Login.css';
 
 class Login extends Component {
@@ -31,7 +32,7 @@ class Login extends Component {
             username: username,
             password: password
         })
-        .then(() => this.props.history.push('/voicer'))
+        .then( res => this.props.history.push('/voicer'))
         .catch(err => console.log(err))
     }
 
