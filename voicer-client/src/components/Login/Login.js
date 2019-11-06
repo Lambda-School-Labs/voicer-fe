@@ -32,7 +32,15 @@ class Login extends Component {
             username: username,
             password: password
         })
-        .then( res => this.props.history.push('/voicer'))
+        .then( res => {
+            const decodedToken = jwt.decode(res.data.token)
+            if(decodedToken.userType === "client") {
+                this.props.history.push('/client')
+            } else {
+                this.props.history.push('/talent')
+            }
+            
+        })
         .catch(err => console.log(err))
     }
 
