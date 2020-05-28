@@ -53,18 +53,11 @@ export default function Voice() {
   }, [searchTags]);
 
   useEffect(()=> {
+    console.log(voiceSearch.split(' '))
     if(voiceSearch === ''){
       setSearchTags("")
     }else{
-      setSearchTags(voiceSearch.split(' ').map((tag, index) => {
-        if(index===0){
-          console.log(index)
-          return `?tag${index}=${tag}`
-        }else{
-          console.log(index)
-          return `&tag${index}=${tag}`
-        }
-      }).join(''))
+      setSearchTags(`?tag=${voiceSearch.split(' ')}`)
     }
     //console.log(searchTags)
   }, [voiceSearch])
