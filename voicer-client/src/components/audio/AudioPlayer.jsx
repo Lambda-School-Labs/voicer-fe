@@ -16,7 +16,6 @@ const AudioPlayer = ({samples}) => {
     sampleIndex === 0 ? setSampleIndex(sampleLength - 1) : setSampleIndex(sampleIndex - 1)
   } 
 
-  console.log(samples, sampleIndex, sampleLength)
   return(<>
     <div className="title">
       <p>{`${sampleIndex+1}/${sampleLength} ${samples[sampleIndex].title}`}</p>
