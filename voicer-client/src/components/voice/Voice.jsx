@@ -8,6 +8,7 @@ export default function Voice() {
   const [nameMatchesDB, setNameMatchesDB] = useState(true);
   const [data, setData] = useState([]);
   const [voiceSearch, setVoiceSearch] = useState('')
+  const [searchTags, setSearchTags] = useState('')
 
   const { token, url } = useContext(DataContext);
 
@@ -34,18 +35,6 @@ export default function Voice() {
         });
     } else {
       //parse search string into multiple search items
-      let searchTags;
-      if(voiceSearch === ''){
-        searchTags=""
-      }else{
-        searchTags = voiceSearch.split().map((tag, index) => {
-          if(index===0){
-            return `?tag=${tag}`
-          }else{
-            return `&tag=${tag}`
-          }
-        })
-      }
       //console.log(`sending to: ${url}/api/users${searchTags}`)
       axios
         .get(`${url}/api/users${searchTags}`)
@@ -61,7 +50,23 @@ export default function Voice() {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [voiceSearch]);
+  }, [searchTags]);
+
+  useEffect(()=> {
+    if(voiceSearch === ''){
+      setSearchTags("")
+    }else{
+      setSearchTags(voiceSearch.split(' ').map((tag, index) => {
+        if(index===0){
+          console.log(index)
+          return `?tag${index}=${tag}`
+        }else{
+          console.log(index)
+          return `&tag${index}=${tag}`
+        }
+      }))
+    }
+  }, [voiceSearch])
 
   return (
     <section className="voice">
