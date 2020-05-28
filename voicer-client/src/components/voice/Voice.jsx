@@ -66,7 +66,7 @@ export default function Voice() {
         }
       }).join(''))
     }
-    console.log(searchTags)
+    //console.log(searchTags)
   }, [voiceSearch])
 
   return (
