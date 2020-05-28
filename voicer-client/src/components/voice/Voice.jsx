@@ -64,8 +64,9 @@ export default function Voice() {
           console.log(index)
           return `&tag${index}=${tag}`
         }
-      }))
+      }).join(''))
     }
+    console.log(searchTags)
   }, [voiceSearch])
 
   return (
