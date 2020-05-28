@@ -7,6 +7,8 @@ import VoiceItem from "./VoiceItem";
 export default function Voice() {
   const [nameMatchesDB, setNameMatchesDB] = useState(true);
   const [data, setData] = useState([]);
+  const [voiceSearch, setVoiceSearch] = useState('')
+  const [searchTags, setSearchTags] = useState('')
 
   const { token, url } = useContext(DataContext);
 
@@ -32,12 +34,13 @@ export default function Voice() {
           setNameMatchesDB(true);
         });
     } else {
-      //console.log("there is no param")
+      //parse search string into multiple search items
+      //console.log(`sending to: ${url}/api/users${searchTags}`)
       axios
-        .get(`${url}/api/users`)
+        .get(`${url}/api/users${searchTags}`)
         .then((result) => {
           setData(result.data);
-          console.log(data);
+          //console.log(data);
 
           setNameMatchesDB(false);
         })
@@ -47,9 +50,24 @@ export default function Voice() {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchTags]);
 
-  console.log(data);
+  useEffect(()=> {
+    if(voiceSearch === ''){
+      setSearchTags("")
+    }else{
+      setSearchTags(voiceSearch.split(' ').map((tag, index) => {
+        if(index===0){
+          console.log(index)
+          return `?tag${index}=${tag}`
+        }else{
+          console.log(index)
+          return `&tag${index}=${tag}`
+        }
+      }).join(''))
+    }
+    //console.log(searchTags)
+  }, [voiceSearch])
 
   return (
     <section className="voice">
@@ -72,6 +90,10 @@ export default function Voice() {
         </>
       ) : (
         <>
+          <label>Search Attributes:</label>
+          <input type="text" value={voiceSearch} onChange={(e)=> {
+            setVoiceSearch(e.target.value)
+          }} />
           {data.map((voice) => (
             <a key={voice.display_name} href={`/voice/${voice.display_name}`}>
               <VoiceItem data={voice} />
