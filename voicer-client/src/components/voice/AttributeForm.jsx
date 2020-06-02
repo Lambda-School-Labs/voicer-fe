@@ -6,61 +6,72 @@ import { Button, Card, InputGroup, FormControl } from "react-bootstrap"
 import { axiosWithAuth } from "../axiosWithAuth/axiosWithAuth"
 
 const AttributeForm = () => {
-  const [language, setLanguage] = useState({ language: "" })
-  const [accent, setAccent] = useState({})
-  const [otherAttribute, setOtherAttribute] = useState({})
-  const [attributes, setAttributes] = useState([])
+  const [tags, setTags] = useState([])
 
   const { refreshAppHandler, url } = useContext(DataContext)
 
-  const languageInput = useInputControl("")
-  const accentsInput = useInputControl("")
-  const otherAttributesInput = useInputControl("")
+  // const tagsInput = useInputControl("")
 
-  const handleLanguageChange = (e) => {
-    setLanguage({ language: e.target.value })
-    console.log(language)
+  const handleTagsChange = (e) => {}
+
+  const makeTag = (e) => {
+    if (e.key === "Enter") {
+      setTags([...tags, e.target.value])
+      e.target.value = ""
+    }
   }
 
-  const handleAccentChange = (e) => {
-    setAccent({ accent: e.target.value })
-    console.log(accent)
+  const stopSubmit = (e) => {
+    e.preventDefault()
   }
 
-  const handleOtherAttributesChange = (e) => {
-    setOtherAttribute({ otherAttribute: e.target.value })
-    console.log(otherAttribute)
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(tags)
+    axios
+      .post(`${url}/api/attribute`, tags)
+      .then((res) => {
+        console.log(res)
+        refreshAppHandler()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
     <>
-      <form>
-        <InputGroup
-          onChange={handleLanguageChange}
-          className="mb-3 tags-text language"
-          id="language"
-        >
-          <FormControl {...languageInput} placeholder="Language" />
-        </InputGroup>
-
-        <InputGroup
-          onChange={handleAccentChange}
-          className="mb-3 tags-text accents"
-          id="accent"
-        >
-          <FormControl {...accentsInput} placeholder="Accents" />
-        </InputGroup>
-        <InputGroup
-          onChange={handleOtherAttributesChange}
-          className="mb-3 tags-text other-Attributes"
-          id="other-attributes"
-        >
-          <FormControl
-            {...otherAttributesInput}
-            placeholder="Other Attributes"
-          />
-        </InputGroup>
+      <form onSubmit={stopSubmit}>
+        <div className="container">
+          <div className="tag-container">
+            {tags.map((tag) => (
+              <Tag name={tag} />
+            ))}
+            <InputGroup className="mb-3 tags-text">
+              <FormControl
+                // {...tagsInput}
+                placeholder="Language"
+                onKeyUp={makeTag}
+                className="tag-input"
+              />
+            </InputGroup>
+          </div>
+        </div>
+        <button type="submit" onClick={handleSubmit}>
+          Add Tags to Profile
+        </button>
       </form>
+    </>
+  )
+}
+
+const Tag = (props) => {
+  return (
+    <>
+      <span className="tag">
+        {props.name}
+        <i className="material-icons">close</i>
+      </span>
     </>
   )
 }
