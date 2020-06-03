@@ -9,6 +9,7 @@ const JobsCard = ({ token, data }) => {
     if (token && token.user_id === data.creator) {
       setCrud(true)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   console.log(crud, edit)
@@ -41,7 +42,7 @@ const JobsCard = ({ token, data }) => {
           <img
             className="jobCardStockImage"
             src={`https://picsum.photos/id/${data.id}/87/87?grayscale`}
-            alt="Stock image for beautification"
+            alt="future for attention"
           />
         </div>
         <div className="jobInfo">
