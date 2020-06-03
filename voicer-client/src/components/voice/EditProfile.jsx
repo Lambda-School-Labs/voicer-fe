@@ -63,13 +63,7 @@ export default function EditProfile({ profileData, token }) {
           <InputGroup className="mb-3">
             <FormControl {...emailInput} placeholder="Email" />
           </InputGroup>
-          {/* <InputGroup className="mb-3">
-            <FormControl
-              {...passwordInput}
-              placeholder="Password"
-              type="password"
-            />
-          </InputGroup> */}
+
           <InputGroup>
             <FormControl
               {...bioInput}
