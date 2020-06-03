@@ -51,26 +51,8 @@ export default function Voice() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTags])
 
-  useEffect(() => {
-    if (voiceSearch === "") {
-      setSearchTags("")
-    } else {
-      setSearchTags(
-        voiceSearch
-          .split(" ")
-          .map((tag, index) => {
-            if (index === 0) {
-              console.log(index)
-              return `?tag${index}=${tag}`
-            } else {
-              console.log(index)
-              return `&tag${index}=${tag}`
-            }
-          })
-          .join("")
-      )
-    }
-    //console.log(searchTags)
+  useEffect(()=> {
+      setSearchTags(`?tag=${voiceSearch.split(' ')}`)
   }, [voiceSearch])
 
   return (
