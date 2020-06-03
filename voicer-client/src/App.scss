@@ -295,3 +295,41 @@ body {
     height: 50vh;
   }
 }
+
+.container {
+  max-width: 60%;
+  margin: 40px;
+  background-color: white;
+  border-radius: 5px;
+}
+.tag-container {
+  border: 2px solid grey;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+.tag-container .tag {
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  background: #4bc5bf;
+  cursor: default;
+}
+
+.tag i {
+  font-size: 16px;
+  margin-left: 5px;
+  color: black;
+  :hover {
+    color: red;
+  }
+}
+.tag-input {
+  flex: 1;
+  outline: none;
+  border: 0;
+  font-size: 16px;
+}

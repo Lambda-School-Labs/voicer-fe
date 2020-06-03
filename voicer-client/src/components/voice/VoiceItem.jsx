@@ -3,6 +3,7 @@ import AudioPlayer from "../audio/AudioPlayer"
 import EditProfile from "./EditProfile"
 import AudioUploader from "../audio/AudioUploader"
 import AddJobForm from "../addJobForm/AddJobForm"
+import AttributeForm from "./AttributeForm"
 
 const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
   const [edit, setEdit] = useState(false)
@@ -74,6 +75,7 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
           )}
           {crud && <AudioUploader />}
           {crud && <AddJobForm />}
+          {crud && <AttributeForm />}
         </div>
       </div>
       {bio && (
