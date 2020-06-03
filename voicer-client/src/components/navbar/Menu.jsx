@@ -8,7 +8,7 @@ import Logout from '../navbar/Logout'
 import useStyles from './NavBarStyle'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import Card from '@material-ui/core/Card'
+import Typography from '@material-ui/core/Typography'
 
 
 const RenderMenu = ({ anchorEl, menuId, handleMenuClose }) => {
@@ -25,7 +25,7 @@ const RenderMenu = ({ anchorEl, menuId, handleMenuClose }) => {
 
 	return (
 		<Menu
-			className={classes.menu}
+			className={classes.menuFocus}
 			anchorEl={anchorEl}
 			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
 			id={menuId}
@@ -36,24 +36,28 @@ const RenderMenu = ({ anchorEl, menuId, handleMenuClose }) => {
 		>
 			{/* MARKETPLACE */}
 				<MenuItem button component={Link} to={`/`} onClick={handleMenuClose}>
-					Marketplace
+					<Typography>
+						Marketplace
+					</Typography>
 				</MenuItem>
 
 			{/* ALL USERS */}
 				<MenuItem button component={Link} to={`/voice/`} onClick={handleMenuClose}>
-					All Users
+					<Typography>
+						All Users
+					</Typography>
 				</MenuItem>
-
-			<hr />
 
 			{token ? (
 				<>
+					<hr />
+
 					{/* MY PROFILE */}
 						<MenuItem button component={Link} to={`/voice/${token.display_name}`} onClick={handleMenuClose}>
-							My Profile
+							<Typography>
+								My Profile
+							</Typography>
 						</MenuItem>
-
-					
 
 					{/* LOGOUT */}
 					<MenuItem onClick={handleMenuClose}>

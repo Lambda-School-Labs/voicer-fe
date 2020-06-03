@@ -81,7 +81,6 @@ export default function Marketplace(props) {
 
   return (
     <section className={classes.marketplace}>
-      {/* <AddJobForm /> */}
       {display}
     </section>
   )
@@ -89,7 +88,7 @@ export default function Marketplace(props) {
 
 const JobDoesntExist = () => {
   return (
-    <article className="error">
+    <article>
       The job you are looking for does not exist
     </article>
   )
@@ -99,7 +98,7 @@ const MultipleJobs = (props) => {
   return (
     <>
       {props.data.map((job) => (
-        <a className="jobLink" key={job.id} href={`/job/${job.id}`}>
+        <a key={job.id} href={`/job/${job.id}`}>
           <JobsCard data={job} />
         </a>
       ))}

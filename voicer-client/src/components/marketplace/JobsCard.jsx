@@ -54,16 +54,12 @@ const JobsCard = ({ token, data }) => {
           />
         </div>
         <div className={classes.jobInfo}>
-          <p className={classes.pTag} >This job pays ${data.payrate}/hour</p>
-          <p className={classes.pTag} >Job poster: {data.creator_id}</p>
+          <Typography>This job pays ${data.payrate}/hour</Typography>
+          <Typography>Job poster: {data.creator_id}</Typography>
         </div>
       </div>
       <div className={classes.jobDescription}>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quam
-          saepe minus reiciendis error consequuntur incidunt commodi delectus
-          quas assumenda!
-        </p>
+        <Typography>{data.description}</Typography>
       </div>
     </Card>
   )

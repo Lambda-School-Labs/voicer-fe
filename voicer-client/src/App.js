@@ -52,6 +52,9 @@ function App() {
             paper: {
               backgroundColor: '#ffa770',
             },
+            list: {
+              color: '#063242',
+            },
           },
         },
       }),

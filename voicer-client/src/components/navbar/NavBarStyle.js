@@ -62,10 +62,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  menu: {
-    // transition: [theme.transitions.standard]: {
-    //   backgroundColor: fade(theme.palette.primary.dark, 0.5),
-    // },
+  menuFocus: {
+    backgroundColor: fade(theme.palette.primary.dark, 0.5),
   },
 }))
 
