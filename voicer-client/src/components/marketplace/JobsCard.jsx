@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react"
 import EditJob from "./EditJob"
 
+import useStyles from './MarketPlaceStyle'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+
 const JobsCard = ({ token, data }) => {
   const [edit, setEdit] = useState(false)
   const [crud, setCrud] = useState(false)
+
+  const classes = useStyles()
 
   useEffect(() => {
     if (token && token.user_id === data.creator) {
@@ -14,52 +23,49 @@ const JobsCard = ({ token, data }) => {
   console.log(crud, edit)
 
   return edit ? (
-    <article className="jobCard">
+    <Card className={classes.jobCard}>
       {crud && (
         <>
           <EditJob data={data} token={token} setEdit={setEdit} />
         </>
       )}
-    </article>
+    </Card>
   ) : (
-    <article className="jobCard">
+    <Card className={classes.jobCard}>
       {crud && (
-        <button
+        <Button
           onClick={(e) => {
             e.preventDefault()
             setEdit(!edit)
           }}
         >
           Edit job info
-        </button>
+        </Button>
       )}
-      <div className="jobTitle">
+      <Card className={classes.jobTitle}>
         <h3>{data.title}</h3>
-      </div>
-      <div className="jobBody">
-        <div className="jobImage">
+      </Card>
+      <div className={classes.jobBody}>
+        <div>
           <img
-            className="jobCardStockImage"
+            className={classes.jobImage}
             src={`https://picsum.photos/id/${data.id}/87/87?grayscale`}
             alt="Stock image for beautification"
           />
         </div>
-        <div className="jobInfo">
-          <p>This job pays ${data.payrate}/hour</p>
-          <p>Job poster: {data.creator_id}</p>
-          <button type="button" className="applyButton">
-            Apply
-          </button>
+        <div className={classes.jobInfo}>
+          <p className={classes.pTag} >This job pays ${data.payrate}/hour</p>
+          <p className={classes.pTag} >Job poster: {data.creator_id}</p>
         </div>
       </div>
-      <div className="jobDescription">
+      <div className={classes.jobDescription}>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quam
           saepe minus reiciendis error consequuntur incidunt commodi delectus
           quas assumenda!
         </p>
       </div>
-    </article>
+    </Card>
   )
 }
 

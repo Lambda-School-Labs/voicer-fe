@@ -3,6 +3,7 @@ import { fade, makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1, 0),
+    backgroundColor: theme.palette.primary.main,
     display: 'flex',
     alignItems: 'center',
     alignContent:'center',
@@ -60,6 +61,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  menu: {
+    // transition: [theme.transitions.standard]: {
+    //   backgroundColor: fade(theme.palette.primary.dark, 0.5),
+    // },
   },
 }))
 

@@ -23,6 +23,36 @@ function App() {
       createMuiTheme({
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
+
+          primary: {
+            main: '#375b6d'
+          },
+          secondary: {
+            main: '#ffa770'
+          },
+          error: {
+            main: '#f44336'
+          },
+          warning: {
+            main: '#ff9800'
+          },
+          info: {
+            main: '#2196f3'
+          },
+          success: {
+            main: '#4caf50'
+          },
+
+          contrastThreshold: 3,
+          tonalOffset: 0.2
+        },
+
+        overrides: {
+          MuiMenu: {
+            paper: {
+              backgroundColor: '#ffa770',
+            },
+          },
         },
       }),
     [prefersDarkMode],

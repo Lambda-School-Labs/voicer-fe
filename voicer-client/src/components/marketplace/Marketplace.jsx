@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import { DataContext } from "../../context/DataContext"
 import axios from "axios"
 import JobsCard from "./JobsCard"
+
+import useStyles from './MarketPlaceStyle'
 // import { jobs } from "../../fakedata/jobs"
 import AddJobForm from "../addJobForm/AddJobForm"
 
@@ -13,6 +15,7 @@ export default function Marketplace(props) {
   const [data, setData] = useState([])
   const { token, url, refreshApp } = useContext(DataContext)
 
+  const classes = useStyles()
   const jobId = useParams().jobId
 
   console.log(props)
@@ -77,7 +80,7 @@ export default function Marketplace(props) {
   }
 
   return (
-    <section className="marketplace">
+    <section className={classes.marketplace}>
       {/* <AddJobForm /> */}
       {display}
     </section>

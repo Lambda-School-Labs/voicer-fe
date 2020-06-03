@@ -182,6 +182,7 @@ body {
 .voice,
 .marketplace {
   margin: 0.5rem;
+  margin-top: 5.5rem;
   display: flex;
   // flex-wrap: nowrap;
   flex-direction: column;
@@ -220,40 +221,6 @@ body {
     }
 
     .profileBio {
-      margin: 0.5rem;
-      padding: 1rem;
-      background-color: var(--bg-main);
-      border: var(--border);
-      border-radius: var(--border-radius);
-      p {
-        text-align: center;
-      }
-    }
-  }
-  .jobCard {
-    max-width: 500px;
-    padding: 1rem;
-    background-color: var(--bg);
-    border-radius: var(--border-radius);
-    margin: 1rem 0px;
-    display: flex;
-    flex-direction: column;
-    .jobTitle {
-      text-align: center;
-    }
-    .jobBody {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      .jobImage {
-        .jobCardStockImage {
-          border-radius: 50%;
-        }
-      }
-      .jobInfo {
-      }
-    }
-    .jobDescription {
       margin: 0.5rem;
       padding: 1rem;
       background-color: var(--bg-main);
