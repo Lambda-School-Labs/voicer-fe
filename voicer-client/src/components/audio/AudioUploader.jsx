@@ -51,8 +51,8 @@ const AudioUploader = () => {
 				</Card.Header>
 
 				<Card.Body>
-					<FormGroup row>
-						<FormLabel for="exampleFile" sm={2}>File</FormLabel>
+					<FormGroup row="true">
+						<FormLabel htmlFor="exampleFile" sm={2}>File</FormLabel>
 						<Col sm={10}>
 							<FormText color="muted">
 								<input type="file" name="file" onChange={onChange} />

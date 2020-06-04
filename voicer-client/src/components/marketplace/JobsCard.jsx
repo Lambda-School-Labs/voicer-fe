@@ -17,6 +17,7 @@ const JobsCard = ({ token, data }) => {
     if (token && token.user_id === data.creator) {
       setCrud(true)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   console.log(crud, edit)
@@ -41,6 +42,7 @@ const JobsCard = ({ token, data }) => {
           Edit job info
         </Button>
       )}
+<<<<<<< HEAD
 
       <Card className={classes.jobTitle}>
         <Typography variant="p" component="h3">
@@ -69,6 +71,35 @@ const JobsCard = ({ token, data }) => {
         </Card>
       </Card>
     </Card>
+=======
+      <div className="jobTitle">
+        <h3>{data.title}</h3>
+      </div>
+      <div className="jobBody">
+        <div className="jobImage">
+          <img
+            className="jobCardStockImage"
+            src={`https://picsum.photos/id/${data.id}/87/87?grayscale`}
+            alt="future for attention"
+          />
+        </div>
+        <div className="jobInfo">
+          <p>This job pays ${data.payrate}/hour</p>
+          <p>Job poster: {data.creator_id}</p>
+          <button type="button" className="applyButton">
+            Apply
+          </button>
+        </div>
+      </div>
+      <div className="jobDescription">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quam
+          saepe minus reiciendis error consequuntur incidunt commodi delectus
+          quas assumenda!
+        </p>
+      </div>
+    </article>
+>>>>>>> e06a57676e8630d906e037865bfad29a9225f4cd
   )
 }
 

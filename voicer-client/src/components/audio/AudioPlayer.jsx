@@ -37,7 +37,7 @@ const AudioPlayer = ({samples}) => {
       className="player"
       preload="auto" 
       controls
-      controlslist="nodownload"
+      controlsList="nodownload"
     />
   </>)
   
