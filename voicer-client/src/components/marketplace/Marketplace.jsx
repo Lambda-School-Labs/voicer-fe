@@ -3,10 +3,6 @@ import { useParams } from "react-router-dom"
 import { DataContext } from "../../context/DataContext"
 import axios from "axios"
 import JobsCard from "./JobsCard"
-// import { jobs } from "../../fakedata/jobs"
-import AddJobForm from "../addJobForm/AddJobForm"
-
-import Hero from "../hero/Hero"
 
 export default function Marketplace(props) {
   const [jobMatchesDB, setJobMatchesDB] = useState(true)
@@ -52,6 +48,7 @@ export default function Marketplace(props) {
           setJobMatchesDB(false)
         })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshApp])
 
   /*

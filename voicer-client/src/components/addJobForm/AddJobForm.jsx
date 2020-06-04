@@ -1,22 +1,17 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import {
   Form,
   FormGroup,
   FormLabel,
   FormText,
-  Button,
-  Card,
-  InputGroup,
   FormControl,
 } from "react-bootstrap"
-import axios from "axios"
 import { axiosWithAuth } from "../axiosWithAuth/axiosWithAuth"
 import { useInputControl } from "../../hooks/useInputControl"
 import { DataContext } from "../../context/DataContext"
 
 const AddJobForm = () => {
-  const [showing, setShowing] = useState([])
-  const { url, refreshAppHandler } = useContext(DataContext)
+  const { url } = useContext(DataContext)
 
   const titleInput = useInputControl("")
   const descriptionInput = useInputControl("")

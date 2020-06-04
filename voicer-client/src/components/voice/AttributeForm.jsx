@@ -1,18 +1,13 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useContext } from "react"
 import axios from "axios"
-import { useInputControl } from "../../hooks/useInputControl"
 import { DataContext } from "../../context/DataContext"
-import { Button, Card, InputGroup, FormControl } from "react-bootstrap"
-import { axiosWithAuth } from "../axiosWithAuth/axiosWithAuth"
+import { InputGroup, FormControl } from "react-bootstrap"
 
 const AttributeForm = () => {
   const [tags, setTags] = useState([])
 
   const { refreshAppHandler, url } = useContext(DataContext)
 
-  // const tagsInput = useInputControl("")
-
-  const handleTagsChange = (e) => {}
 
   const makeTag = (e) => {
     if (e.key === "Enter") {
