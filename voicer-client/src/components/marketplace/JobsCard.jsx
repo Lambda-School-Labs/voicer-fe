@@ -3,7 +3,6 @@ import EditJob from "./EditJob"
 
 import useStyles from './MarketPlaceStyle'
 import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
@@ -42,25 +41,33 @@ const JobsCard = ({ token, data }) => {
           Edit job info
         </Button>
       )}
+
       <Card className={classes.jobTitle}>
-        <h3>{data.title}</h3>
+        <Typography variant="p" component="h3">
+          {data.title}
+        </Typography>
       </Card>
-      <div className={classes.jobBody}>
-        <div>
-          <img
-            className={classes.jobImage}
-            src={`https://picsum.photos/id/${data.id}/87/87?grayscale`}
-            alt="Stock image for beautification"
-          />
-        </div>
-        <div className={classes.jobInfo}>
-          <Typography>This job pays ${data.payrate}/hour</Typography>
-          <Typography>Job poster: {data.creator_id}</Typography>
-        </div>
-      </div>
-      <div className={classes.jobDescription}>
-        <Typography>{data.description}</Typography>
-      </div>
+
+      <Card className={classes.midCard}>
+        <CardContent className={classes.jobBody}>
+          <div>
+            <img
+              className={classes.jobImage}
+              src={`https://picsum.photos/id/${data.id}/87/87?grayscale`}
+              alt="Stock image for beautification"/>
+          </div>
+          <div className={classes.jobInfo}>
+            <Typography variant="body1" >This job pays ${data.payrate}/hour</Typography>
+            <Typography variant="body2" >Job poster: {data.creator_id}</Typography>
+          </div>
+        </CardContent>
+
+        <Card className={classes.jobDescription}>
+          <Typography variant="body1">
+            {data.description}
+          </Typography>
+        </Card>
+      </Card>
     </Card>
   )
 }

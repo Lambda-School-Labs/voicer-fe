@@ -25,32 +25,37 @@ const useStyles = makeStyles((theme) => ({
 	},
 	jobTitle: {
 		textAlign: 'center',
-		marginBottom: theme.spacing(3),
-		padding: theme.spacing(0, 2),
+		marginBottom: theme.spacing(2),
+		padding: theme.spacing(1, 2),
 		backgroundColor: theme.palette.secondary.main,
 		color: theme.palette.primary.dark,
+	},
+	midCard: {
+		backgroundColor: theme.palette.primary.main,
 	},
 	jobBody: {
 		display: 'flex',
 		flexDirection: 'row-reverse',
+		alignContent: 'center',
 		justifyContent: 'space-between',
 	},
 	jobImage: {
-		marginRight: theme.spacing(4),
+		marginRight: theme.spacing(1),
 		borderRadius: '50%',
 	},
 	jobInfo: {
-		marginLeft: theme.spacing(4),
+		margin: theme.spacing(3, 0, 0 , 4),
+		color: theme.palette.common.white,
+		display: 'flex',
+		flexDirection: 'column',
+		alignContent: 'center',
 	},
 	jobDescription: {
-		margin: theme.spacing(2),
+		margin: theme.spacing(0, 2, 2),
 		padding: theme.spacing(2, 3),
 		color: theme.palette.common.white,
-		backgroundColor: theme.palette.primary.main,
+		backgroundColor: theme.palette.primary.dark,
 		borderRadius: theme.shape.borderRadius,	
-	},
-	pTag: {
-		
 	},
 }))
 

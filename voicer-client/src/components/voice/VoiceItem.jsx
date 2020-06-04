@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react"
+
 import AudioPlayer from "../audio/AudioPlayer"
 import EditProfile from "./EditProfile"
 import AudioUploader from "../audio/AudioUploader"
 import AddJobForm from "../addJobForm/AddJobForm"
 import AttributeForm from "./AttributeForm"
 
+import useStyles from './VoiceStyle'
+import Card from '@material-ui/core/Card'
+
 const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
   const [edit, setEdit] = useState(false)
   const [crud, setCrud] = useState(false)
+
+  const classes = useStyles()
 
   //if logged in and your record => you can edit
   useEffect(() => {
@@ -44,7 +50,7 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
       )}
     </article>
   ) : (
-    <article className="voiceItem">
+    <Card className={classes.voiceCard}>
       {crud && (
         <button
           onClick={(e) => {
@@ -55,8 +61,13 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
           Edit My Info
         </button>
       )}
+
       <div className="profileHeader">
-        <div className="profileImage">{/* photo placeholder */}</div>
+
+        <div className="profileImage">
+          {/* photo placeholder */}
+        </div>
+
         <div className="profileInfo">
           <h2>{`${data.first_name} ${data.last_name}`}</h2>
           <h3>{data.display_name}</h3>
@@ -69,6 +80,7 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
           <p>{data.jobsCompleted} Jobs Completed</p>
           {bio && <button>Invite to Apply</button>}
         </div>
+
         <div className="profileSamples">
           {data.samples[0] !== undefined && (
             <AudioPlayer samples={data.samples} />
@@ -77,13 +89,14 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
           {crud && <AddJobForm />}
           {crud && <AttributeForm />}
         </div>
+
       </div>
       {bio && (
         <div className="profileBio">
           <p>{data.bio}</p>
         </div>
       )}
-    </article>
+    </Card>
   )
 }
 

@@ -63,14 +63,12 @@ function App() {
   //End Material UI Dark Mode
 
   const token = GateKeeper()
-  // const [url] = useState("localhost:3000")
   const [url] = useState("https://voicer-lambda-app.herokuapp.com")
 
   //global reset
   const refreshAppHandler = () => {
     window.location.reload()
   }
-
   //end global reset
 
   //UI elements
