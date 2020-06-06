@@ -3,15 +3,12 @@ import { useParams } from "react-router-dom"
 import { DataContext } from "../../context/DataContext"
 import axios from "axios"
 import JobsCard from "./JobsCard"
-<<<<<<< HEAD
 
 import useStyles from './MarketPlaceStyle'
 // import { jobs } from "../../fakedata/jobs"
 import AddJobForm from "../addJobForm/AddJobForm"
 
 import Hero from "../hero/Hero"
-=======
->>>>>>> e06a57676e8630d906e037865bfad29a9225f4cd
 
 export default function Marketplace(props) {
   const [jobMatchesDB, setJobMatchesDB] = useState(true)

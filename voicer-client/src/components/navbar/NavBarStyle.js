@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuFocus: {
+    transition: theme.transitions.easing.easeInOut,
     backgroundColor: fade(theme.palette.primary.dark, 0.5),
   },
 }))

@@ -8,6 +8,10 @@ import AttributeForm from "./AttributeForm"
 
 import useStyles from './VoiceStyle'
 import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
+import Rating from '@material-ui/lab/Rating'
 
 const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
   const [edit, setEdit] = useState(false)
@@ -62,22 +66,29 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
         </button>
       )}
 
-      <div className="profileHeader">
+      <CardContent className="profileHeader">
 
-        <div className="profileImage">
-          {/* photo placeholder */}
-        </div>
+        <Avatar
+          className={classes.voiceAvatar}
+          alt={data.display_name}
+          src={data.avatar}
+        />
 
         <div className="profileInfo">
-          <h2>{`${data.first_name} ${data.last_name}`}</h2>
-          <h3>{data.display_name}</h3>
+
+
+          <Typography variant="h6">
+            {data.display_name}
+          </Typography>
+
+          <Rating name="read-only" value={data.rating} readOnly />
+
+          <Typography>
+            {data.jobsCompleted} Jobs Completed
+          </Typography>
+
+
           {bio && <p>{data.location}</p>}
-          <div className="stars">
-            <span role="img" aria-label="Stars">
-              ⭐️⭐️⭐️⭐️⭐️
-            </span>
-          </div>
-          <p>{data.jobsCompleted} Jobs Completed</p>
           {bio && <button>Invite to Apply</button>}
         </div>
 
@@ -90,7 +101,7 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
           {crud && <AttributeForm />}
         </div>
 
-      </div>
+      </CardContent>
       {bio && (
         <div className="profileBio">
           <p>{data.bio}</p>
