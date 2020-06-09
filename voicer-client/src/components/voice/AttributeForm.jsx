@@ -3,7 +3,8 @@ import axios from "axios"
 import { DataContext } from "../../context/DataContext"
 import { InputGroup, FormControl } from "react-bootstrap"
 
-const AttributeForm = ({proptags, id}) => {
+const AttributeForm = ({proptags, id, crud}) => {
+  console.log("crud", crud)
   const [tags, setTags] = useState([])
 
   const { refreshAppHandler, url } = useContext(DataContext)
@@ -46,7 +47,10 @@ const AttributeForm = ({proptags, id}) => {
 
   return (
     <>
-      <form onSubmit={stopSubmit}>
+
+      {crud 
+      ? 
+        <form onSubmit={stopSubmit}>
         <div className="container">
           <div className="tag-container">
             {tags.map((tag) => (
@@ -65,6 +69,18 @@ const AttributeForm = ({proptags, id}) => {
           Add Tags to Profile
         </button>
       </form>
+      
+      : 
+      
+      console.log('shithole') }
+      <div className="tag-container">
+      {tags.map((tag) => (
+              <Tag name={tag} crud={crud} />
+            ))}
+      </div>
+
+
+
     </>
   )
 }
@@ -74,7 +90,8 @@ const Tag = (props) => {
     <>
       <span className="tag">
         {props.name}
-        <i className="material-icons">close</i>
+        {props.crud && <i className="material-icons">close</i>}
+        
       </span>
     </>
   )

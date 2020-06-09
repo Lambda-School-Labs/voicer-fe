@@ -30,10 +30,10 @@ console.log("Samples", samples)
         
       </div>
       <div className="attributes-container">
-        <AttributeForm proptags={samples[sampleIndex].tags} id={samples[sampleIndex].id}/>
+        <AttributeForm crud={crud} proptags={samples[sampleIndex].tags} id={samples[sampleIndex].id}/>
       {/* {samples[sampleIndex].tags.map(t => <span className='attribute'>{t}</span>)} */}
       </div>
-    
+
         <button
           onClick={(e)=>nexthandler(e)}
         >&rarr;</button>
