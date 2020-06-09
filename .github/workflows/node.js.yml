@@ -6,6 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
+    paths:
+    - 'voicer-client/**'
   pull_request:
     branches: [ master ]
 
