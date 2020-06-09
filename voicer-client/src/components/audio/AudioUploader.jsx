@@ -15,13 +15,13 @@ const AudioUploader = () => {
 	const descriptionInput = useInputControl('')
 
 	const doSubmit = (e) => {
+		
 		e.preventDefault()
 		const formData = new FormData()
-		// setMedia({...media, title: titleInput, description: descriptionInput})
+		setMedia({...media, title: titleInput, description: descriptionInput})
 		formData.append('file', media.file)
 		formData.append('title', titleInput.value)
 		formData.append('description', descriptionInput.value)
-		console.log(formData)
 		const config = {
 			headers: {
 				'content-type': 'multipart/form-data'

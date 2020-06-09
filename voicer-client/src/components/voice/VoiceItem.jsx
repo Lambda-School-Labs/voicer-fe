@@ -71,11 +71,10 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
         </div>
         <div className="profileSamples">
           {data.samples[0] !== undefined && (
-            <AudioPlayer samples={data.samples} />
+            <AudioPlayer samples={data.samples} edit={edit} />
           )}
           {crud && <AudioUploader />}
           {crud && <AddJobForm />}
-          {crud && <AttributeForm />}
         </div>
       </div>
       {bio && (
