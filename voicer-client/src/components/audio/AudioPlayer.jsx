@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
+import AttributeForm from "../voice/AttributeForm"
 
 
-const AudioPlayer = ({samples, edit}) => {
+const AudioPlayer = ({samples, crud}) => {
 
   const [sampleIndex, setSampleIndex] = useState(0)
   const [sampleLength] = useState(samples.length)
@@ -18,7 +19,7 @@ const AudioPlayer = ({samples, edit}) => {
 console.log("Samples", samples)
   return(<>
     <div className="title">
-      <p>{`${sampleIndex+1}/${sampleLength} ${samples[sampleIndex].title}`} <span>{edit ? <i className="material-icons">add</i> : ""}</span></p>
+      <p>{`${sampleIndex+1}/${sampleLength} ${samples[sampleIndex].title}`} <span>{crud ? <i className="material-icons">add</i> : ""}</span></p>
     </div>
     <div className="carousel">
         <button
@@ -29,7 +30,8 @@ console.log("Samples", samples)
         
       </div>
       <div className="attributes-container">
-  {samples[sampleIndex].tags.map(t => <span className='attribute'>{t}</span>)}
+        <AttributeForm proptags={samples[sampleIndex].tags} id={samples[sampleIndex].id}/>
+      {/* {samples[sampleIndex].tags.map(t => <span className='attribute'>{t}</span>)} */}
       </div>
     
         <button
