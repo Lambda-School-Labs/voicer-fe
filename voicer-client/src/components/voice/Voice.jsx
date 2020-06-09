@@ -9,6 +9,7 @@ export default function Voice() {
   const [data, setData] = useState([])
   const [voiceSearch, setVoiceSearch] = useState("")
   const [searchTags, setSearchTags] = useState("")
+  const [strict, setStrict] = useState(true)
 
   const { token, url } = useContext(DataContext)
 
@@ -51,8 +52,9 @@ export default function Voice() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTags])
 
-  useEffect(()=> {
-      setSearchTags(`?tag=${voiceSearch.split(' ')}`)
+  useEffect(() => {
+    setSearchTags(`?tag=${voiceSearch.split(" ")}&strict=${strict}`)
+    console.log(searchTags)
   }, [voiceSearch])
 
   return (
@@ -84,6 +86,31 @@ export default function Voice() {
               setVoiceSearch(e.target.value)
             }}
           />
+          <div>
+            <input
+              type="radio"
+              name="search"
+              value="strict"
+              checked
+              onClick={() => {
+                setStrict(true)
+              }}
+            />
+            <label htmlFor="strict">Strict Search</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              name="search"
+              value="expansive"
+              onClick={() => {
+                setStrict(false)
+              }}
+            />
+            <label htmlFor="expansive">Expansive Search</label>
+          </div>
+
           {data.map((voice) => (
             <a key={voice.display_name} href={`/voice/${voice.display_name}`}>
               <VoiceItem data={voice} />

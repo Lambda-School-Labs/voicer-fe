@@ -8,7 +8,6 @@ const AttributeForm = () => {
 
   const { refreshAppHandler, url } = useContext(DataContext)
 
-
   const makeTag = (e) => {
     if (e.key === "Enter") {
       setTags([...tags, e.target.value])
@@ -23,15 +22,17 @@ const AttributeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(tags)
-    axios
-      .post(`${url}/api/attribute`, tags)
-      .then((res) => {
-        console.log(res)
-        refreshAppHandler()
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    tags.forEach((tag) => {
+      axios
+        // { id: 2, tags: [cool, great] }
+        .post(`${url}/api/attribute`, tag)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    })
   }
 
   return (
