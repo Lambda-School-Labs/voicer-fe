@@ -5,8 +5,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --detectOpenHandles --forceExit",
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.5.0",
@@ -45,5 +46,13 @@
   },
   "devDependencies": {
     "yarn": "^1.22.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__tests__/**"
+    ]
   }
 }
