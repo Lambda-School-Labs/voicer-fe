@@ -46,14 +46,12 @@
   "devDependencies": {
     "yarn": "^1.22.4"
   },
-  "collectCoverageFrom": [
-    "**/*.{js,jsx}",
-		"!**/node_modules/**",
-    "!**/vendor/**",
-		"!**/database/**",
-		"!**/tests/**",
-		"!**/spec/**",
-    "!**/*.spec.{js,jsx}",
-		"!**/coverage/**"
-	]
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__tests__/**"
+    ]
+  }
 }
