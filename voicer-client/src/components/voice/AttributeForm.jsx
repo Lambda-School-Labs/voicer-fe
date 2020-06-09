@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import axios from "axios"
 import { DataContext } from "../../context/DataContext"
 import { InputGroup, FormControl } from "react-bootstrap"
 
-const AttributeForm = () => {
+const AttributeForm = ({proptags, id}) => {
   const [tags, setTags] = useState([])
 
   const { url } = useContext(DataContext)
@@ -15,6 +15,10 @@ const AttributeForm = () => {
     }
   }
 
+  useEffect(() => {
+    setTags(proptags)
+  },[proptags])
+
   const stopSubmit = (e) => {
     e.preventDefault()
   }
@@ -23,9 +27,14 @@ const AttributeForm = () => {
     e.preventDefault()
     console.log(tags)
     tags.forEach((tag) => {
+      let obj = {
+        id: id,
+        title: tag
+      }
+      console.log(obj)
+
       axios
-        // { id: 2, tags: [cool, great] }
-        .post(`${url}/api/attribute`, tag)
+        .post(`${url}/api/attribute`, obj)
         .then((res) => {
           console.log(res)
         })
@@ -46,7 +55,6 @@ const AttributeForm = () => {
             <InputGroup className="mb-3 tags-text">
               <FormControl
                 // {...tagsInput}
-                placeholder="Language"
                 onKeyUp={makeTag}
                 className="tag-input"
               />

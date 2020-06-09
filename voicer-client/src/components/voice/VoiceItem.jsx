@@ -70,7 +70,7 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
         </div>
         <div className="profileSamples">
           {data.samples[0] !== undefined && (
-            <AudioPlayer samples={data.samples} edit={edit} />
+            <AudioPlayer samples={data.samples} crud={crud} />
           )}
           {crud && <AudioUploader />}
           {crud && <AddJobForm />}
