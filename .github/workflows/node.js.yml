@@ -6,7 +6,6 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-    
   pull_request:
     branches: [ master ]
 
@@ -14,6 +13,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: voicer-client
 
     strategy:
       matrix:
@@ -25,15 +28,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-    - working-directory: ./voicer-client
-    - run: | 
-      npm ci
-    - name: Build App
-    - working-directory: ./voicer-client
-    - run: |
-      npm run build --if-present
-    - name: Test App
-    - working-directory: ./voicer-client
-    - run: | 
-      npm test
+    - run: npm i
+    - run: npm run build --if-present
+    - run: npm test
