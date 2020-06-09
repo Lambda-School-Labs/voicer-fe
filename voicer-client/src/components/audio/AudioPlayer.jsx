@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 
-const AudioPlayer = ({samples}) => {
+const AudioPlayer = ({samples, edit}) => {
 
   const [sampleIndex, setSampleIndex] = useState(0)
   const [sampleLength] = useState(samples.length)
@@ -15,10 +15,10 @@ const AudioPlayer = ({samples}) => {
     e.preventDefault()
     sampleIndex === 0 ? setSampleIndex(sampleLength - 1) : setSampleIndex(sampleIndex - 1)
   } 
-
+console.log("Samples", samples)
   return(<>
     <div className="title">
-      <p>{`${sampleIndex+1}/${sampleLength} ${samples[sampleIndex].title}`}</p>
+      <p>{`${sampleIndex+1}/${sampleLength} ${samples[sampleIndex].title}`} <span>{edit ? <i className="material-icons">add</i> : ""}</span></p>
     </div>
     <div className="carousel">
         <button
@@ -26,8 +26,12 @@ const AudioPlayer = ({samples}) => {
         >&larr;</button>
       <div className="description">
         <p>{samples[sampleIndex].description}</p>
-        <p>Attributes</p>
+        
       </div>
+      <div className="attributes-container">
+  {samples[sampleIndex].tags.map(t => <span className='attribute'>{t}</span>)}
+      </div>
+    
         <button
           onClick={(e)=>nexthandler(e)}
         >&rarr;</button>
