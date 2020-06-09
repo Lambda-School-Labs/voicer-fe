@@ -2,3 +2,4 @@
 .netlify
 voicer-client/.env
 .DS_Store
+voicer-client/coverage
