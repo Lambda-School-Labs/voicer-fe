@@ -6,7 +6,7 @@ import { InputGroup, FormControl } from "react-bootstrap"
 const AttributeForm = () => {
   const [tags, setTags] = useState([])
 
-  const { refreshAppHandler, url } = useContext(DataContext)
+  const { url } = useContext(DataContext)
 
   const makeTag = (e) => {
     if (e.key === "Enter") {
