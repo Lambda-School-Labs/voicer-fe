@@ -44,12 +44,13 @@ const AttributeForm = ({proptags, id, crud}) => {
         })
     })
   }
-
+  console.log("CURRENT CRUD IS: ", crud)
   return (
     <>
 
       {crud 
-      ? 
+      ?
+        (
         <form onSubmit={stopSubmit}>
         <div className="container">
           <div className="tag-container">
@@ -69,17 +70,16 @@ const AttributeForm = ({proptags, id, crud}) => {
           Add Tags to Profile
         </button>
       </form>
+        )
+      :
+    
       
-      : 
-      
-      console.log('shithole') }
       <div className="tag-container">
       {tags.map((tag) => (
               <Tag name={tag} crud={crud} />
             ))}
       </div>
-
-
+      }
 
     </>
   )
