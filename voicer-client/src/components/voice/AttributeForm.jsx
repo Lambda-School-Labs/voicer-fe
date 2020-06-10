@@ -4,7 +4,6 @@ import { DataContext } from "../../context/DataContext"
 import { InputGroup, FormControl } from "react-bootstrap"
 
 const AttributeForm = ({proptags, id, crud}) => {
-  console.log("crud", crud)
   const [tags, setTags] = useState([])
 
   const { refreshAppHandler, url } = useContext(DataContext)
@@ -26,13 +25,11 @@ const AttributeForm = ({proptags, id, crud}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(tags)
     tags.forEach((tag) => {
       let obj = {
         id: id,
         title: tag
       }
-      console.log(obj)
 
       axios
         .post(`${url}/api/attribute`, obj)
@@ -54,7 +51,7 @@ const AttributeForm = ({proptags, id, crud}) => {
         <div className="container">
           <div className="tag-container">
             {tags.map((tag) => (
-              <Tag name={tag} crud={crud} />
+              <Tag name={tag} crud={crud} id={id} />
             ))}
             <InputGroup className="mb-3 tags-text">
               <FormControl
@@ -79,26 +76,37 @@ const AttributeForm = ({proptags, id, crud}) => {
             ))}
       </div>
       }
-
     </>
   )
 }
 
 const Tag = (props, {crud}) => {
+  const {url} = useContext(DataContext)
   const [hover, setHover] = useState(false)
 
   const deleteTag = (e) => {
-    //code goes here
+    e.preventDefault()
+
+    let obj = {
+      id: props.id,
+      title: props.name
+    }    
+
+    axios
+      .delete(`${url}/api/avs`, obj)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
     <>
       <span className="tag">
         {props.name}
-
-
-        {<i className="material-icons tag-delete-icon">delete</i> }
-        
+        {<i className="material-icons tag-delete-icon" onClick={deleteTag}>delete</i> }
       </span>
     </>
   )
