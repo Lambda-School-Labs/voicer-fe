@@ -44,7 +44,6 @@ const AttributeForm = ({proptags, id, crud}) => {
         })
     })
   }
-  console.log("CURRENT CRUD IS: ", crud)
   return (
     <>
 
@@ -55,7 +54,7 @@ const AttributeForm = ({proptags, id, crud}) => {
         <div className="container">
           <div className="tag-container">
             {tags.map((tag) => (
-              <Tag name={tag} />
+              <Tag name={tag} crud={crud} />
             ))}
             <InputGroup className="mb-3 tags-text">
               <FormControl
@@ -76,7 +75,7 @@ const AttributeForm = ({proptags, id, crud}) => {
       
       <div className="tag-container">
       {tags.map((tag) => (
-              <Tag name={tag} crud={crud} />
+              <Tag name={tag}  />
             ))}
       </div>
       }
@@ -85,12 +84,20 @@ const AttributeForm = ({proptags, id, crud}) => {
   )
 }
 
-const Tag = (props) => {
+const Tag = (props, {crud}) => {
+  const [hover, setHover] = useState(false)
+
+  const deleteTag = (e) => {
+    //code goes here
+  }
+
   return (
     <>
       <span className="tag">
         {props.name}
-        {props.crud && <i className="material-icons">close</i>}
+
+
+        {<i className="material-icons tag-delete-icon">delete</i> }
         
       </span>
     </>
