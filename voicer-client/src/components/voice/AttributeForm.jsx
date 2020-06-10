@@ -6,7 +6,7 @@ import { InputGroup, FormControl } from "react-bootstrap"
 const AttributeForm = ({proptags, id, crud}) => {
   const [tags, setTags] = useState([])
 
-  const { url } = useContext(DataContext)
+  const { refreshAppHandler, url } = useContext(DataContext)
 
   const makeTag = (e) => {
     if (e.key === "Enter") {
@@ -82,18 +82,23 @@ const AttributeForm = ({proptags, id, crud}) => {
 
 const Tag = (props, {crud}) => {
   const {url} = useContext(DataContext)
-  const [hover, setHover] = useState(false)
 
   const deleteTag = (e) => {
     e.preventDefault()
 
-    let obj = {
-      id: props.id,
-      title: props.name
-    }    
+    const name = props.name 
+    const id = props.id
+
+    console.log(name,id)
+    // const newobj = {
+    //   id: id,
+    //   title: name
+    // }    
+
+    // console.log(newobj)
 
     axios
-      .delete(`${url}/api/avs`, obj)
+      .delete(`${url}/api/avs`, {data: {id:id, title:name}} )
       .then((res) => {
         console.log(res)
       })
