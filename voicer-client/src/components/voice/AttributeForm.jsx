@@ -3,7 +3,7 @@ import axios from "axios"
 import { DataContext } from "../../context/DataContext"
 import { InputGroup, FormControl } from "react-bootstrap"
 
-const AttributeForm = ({proptags, id}) => {
+const AttributeForm = ({proptags, id, crud}) => {
   const [tags, setTags] = useState([])
 
   const { url } = useContext(DataContext)
@@ -25,13 +25,11 @@ const AttributeForm = ({proptags, id}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(tags)
     tags.forEach((tag) => {
       let obj = {
         id: id,
         title: tag
       }
-      console.log(obj)
 
       axios
         .post(`${url}/api/attribute`, obj)
@@ -43,14 +41,17 @@ const AttributeForm = ({proptags, id}) => {
         })
     })
   }
-
   return (
     <>
-      <form onSubmit={stopSubmit}>
+
+      {crud 
+      ?
+        (
+        <form onSubmit={stopSubmit}>
         <div className="container">
           <div className="tag-container">
             {tags.map((tag) => (
-              <Tag name={tag} />
+              <Tag name={tag} crud={crud} id={id} />
             ))}
             <InputGroup className="mb-3 tags-text">
               <FormControl
@@ -65,16 +66,47 @@ const AttributeForm = ({proptags, id}) => {
           Add Tags to Profile
         </button>
       </form>
+        )
+      :
+    
+      
+      <div className="tag-container">
+      {tags.map((tag) => (
+              <Tag name={tag}  />
+            ))}
+      </div>
+      }
     </>
   )
 }
 
-const Tag = (props) => {
+const Tag = (props, {crud}) => {
+  const {url} = useContext(DataContext)
+  const [hover, setHover] = useState(false)
+
+  const deleteTag = (e) => {
+    e.preventDefault()
+
+    let obj = {
+      id: props.id,
+      title: props.name
+    }    
+
+    axios
+      .delete(`${url}/api/avs`, obj)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <>
       <span className="tag">
         {props.name}
-        <i className="material-icons">close</i>
+        {<i className="material-icons tag-delete-icon" onClick={deleteTag}>delete</i> }
       </span>
     </>
   )
