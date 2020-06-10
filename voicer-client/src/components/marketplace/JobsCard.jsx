@@ -55,9 +55,7 @@ const JobsCard = ({ token, data }) => {
       </div>
       <div className="jobDescription">
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quam
-          saepe minus reiciendis error consequuntur incidunt commodi delectus
-          quas assumenda!
+          {data.description}
         </p>
       </div>
     </article>
