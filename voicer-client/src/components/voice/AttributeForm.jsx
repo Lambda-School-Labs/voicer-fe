@@ -1,13 +1,12 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import axios from "axios"
 import { DataContext } from "../../context/DataContext"
 import { InputGroup, FormControl } from "react-bootstrap"
 
-const AttributeForm = () => {
+const AttributeForm = ({proptags, id, crud}) => {
   const [tags, setTags] = useState([])
 
   const { refreshAppHandler, url } = useContext(DataContext)
-
 
   const makeTag = (e) => {
     if (e.key === "Enter") {
@@ -16,36 +15,47 @@ const AttributeForm = () => {
     }
   }
 
+  useEffect(() => {
+    setTags(proptags)
+  },[proptags])
+
   const stopSubmit = (e) => {
     e.preventDefault()
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(tags)
-    axios
-      .post(`${url}/api/attribute`, tags)
-      .then((res) => {
-        console.log(res)
-        refreshAppHandler()
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
+    tags.forEach((tag) => {
+      let obj = {
+        id: id,
+        title: tag
+      }
 
+      axios
+        .post(`${url}/api/attribute`, obj)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    })
+  }
   return (
     <>
-      <form onSubmit={stopSubmit}>
+
+      {crud 
+      ?
+        (
+        <form onSubmit={stopSubmit}>
         <div className="container">
           <div className="tag-container">
             {tags.map((tag) => (
-              <Tag name={tag} />
+              <Tag name={tag} crud={crud} id={id} />
             ))}
             <InputGroup className="mb-3 tags-text">
               <FormControl
                 // {...tagsInput}
-                placeholder="Language"
                 onKeyUp={makeTag}
                 className="tag-input"
               />
@@ -56,16 +66,52 @@ const AttributeForm = () => {
           Add Tags to Profile
         </button>
       </form>
+        )
+      :
+    
+      
+      <div className="tag-container">
+      {tags.map((tag) => (
+              <Tag name={tag}  />
+            ))}
+      </div>
+      }
     </>
   )
 }
 
-const Tag = (props) => {
+const Tag = (props, {crud}) => {
+  const {url} = useContext(DataContext)
+
+  const deleteTag = (e) => {
+    e.preventDefault()
+
+    const name = props.name 
+    const id = props.id
+
+    console.log(name,id)
+    // const newobj = {
+    //   id: id,
+    //   title: name
+    // }    
+
+    // console.log(newobj)
+
+    axios
+      .delete(`${url}/api/avs`, {data: {id:id, title:name}} )
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <>
       <span className="tag">
         {props.name}
-        <i className="material-icons">close</i>
+        {<i className="material-icons tag-delete-icon" onClick={deleteTag}>delete</i> }
       </span>
     </>
   )

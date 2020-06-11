@@ -4,7 +4,6 @@ import AudioPlayer from "../audio/AudioPlayer"
 import EditProfile from "./EditProfile"
 import AudioUploader from "../audio/AudioUploader"
 import AddJobForm from "../addJobForm/AddJobForm"
-import AttributeForm from "./AttributeForm"
 
 import useStyles from './VoiceStyle'
 import Card from '@material-ui/core/Card'

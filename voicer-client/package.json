@@ -5,10 +5,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "node ./node_modules/jest/bin/jest.js --watch",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --detectOpenHandles --forceExit",
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^10.1.0",
     "@aeaton/react-prosemirror": "^0.22.1",
     "@aeaton/react-prosemirror-config-default": "^0.12.0",
     "@material-ui/core": "^4.9.14",
@@ -45,5 +49,13 @@
   },
   "devDependencies": {
     "yarn": "^1.22.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__tests__/**"
+    ]
   }
 }

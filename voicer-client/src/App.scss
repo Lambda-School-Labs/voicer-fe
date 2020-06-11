@@ -333,3 +333,18 @@ body {
   border: 0;
   font-size: 16px;
 }
+
+
+.tag  {
+  .tag-delete-icon {
+    display: none;
+  }
+  &:hover {
+    .tag-delete-icon {
+      display: inline;
+      &:hover {
+        color: orange;
+      }
+    }
+  }
+}
