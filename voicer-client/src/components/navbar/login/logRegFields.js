@@ -52,6 +52,7 @@ const LogRegFields = (props) => {
       setValidate(make)
       return
     } else {
+      console.log("before axios")
       axios
         .post(
           title === "Register"
@@ -60,10 +61,12 @@ const LogRegFields = (props) => {
           userInfo
         )
         .then((res) => {
-          props.setDropDown(false)
+          // props.setDropDown(false)
+          console.log(res)
           localStorage.setItem("token", res.data.token)
         })
-        .catch((err) => {})
+        .catch((err) => {console.log(err)})
+
         .finally(() => {
           props.setLoginRegister(false)
           refreshAppHandler()

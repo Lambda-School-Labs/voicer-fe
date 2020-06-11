@@ -48,23 +48,16 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-      alignSelf: 'center',
-    
-    },
-  },
-  sectionMobile: {
     display: 'flex',
-    justifyContent: 'self-end',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
+    alignSelf: 'center',
   },
   menuFocus: {
     transition: theme.transitions.easing.easeInOut,
     backgroundColor: fade(theme.palette.primary.dark, 0.5),
+  },
+  regField: {
+    display: 'flex',
+    flexDirection: 'column',
   },
 }))
 

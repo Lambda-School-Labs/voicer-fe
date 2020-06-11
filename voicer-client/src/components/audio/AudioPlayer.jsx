@@ -1,54 +1,109 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import { useTheme } from '@material-ui/core/styles'
+
+import useStyles from '../voice/VoiceStyle'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
+import MobileStepper from '@material-ui/core/MobileStepper'
+import Button from '@material-ui/core/Button'
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 
 
 const AudioPlayer = ({samples}) => {
+  const classes = useStyles()
+  const theme = useTheme()
 
   const [sampleIndex, setSampleIndex] = useState(0)
 
-  const nexthandler = (e) => {
+  const handleNext = (e) => {
     e.preventDefault()
-    setSampleIndex(sampleIndex+1)
-  } 
+    setSampleIndex(sampleIndex + 1)} 
 
-  const prevhandler = (e) => {
+  const handleBack = (e) => {
     e.preventDefault()
-    setSampleIndex(sampleIndex - 1)
-  } 
+    setSampleIndex(sampleIndex - 1)}
 
-  return(<>
+  console.log(samples)
 
-    <div className="title">
-      <p>{`${samples[sampleIndex].title}`}</p>
-    </div>
+  return(
+    <Card className={classes.sampleCard} >
 
-    <div className="carousel">
+      {/* TITLE */}
+      <Card classes={{ root: classes.sampleTitle }}>
+        <Typography variant="p" component="h3">
+          {`${samples[sampleIndex].title}`}
+        </Typography>
+      </Card>
 
-        <button
-          onClick={(e)=>prevhandler(e)}
-          disabled={sampleIndex === 0}
-        >&larr;</button>
+      {/* TAGS */}
+      <CardContent className={classes.tags}>
+        {samples[sampleIndex].tags[0] !== undefined && 
+          samples[sampleIndex].tags.map(tag => (
+            <Chip
+              classes={{
+                root: classes.chip,
+                label: classes.chip,
+              }}
+              label={tag}
+              key={tag}
+              color='secondary'
+            />
+          ))
+        }
+      </CardContent>
 
-      <div className="description">
-        <p>{samples[sampleIndex].description}</p>
-        <p>Attributes</p>
-      </div>
+      <CardActions className={classes.controls}>
 
-        <button
-          onClick={(e)=>nexthandler(e)}
-          disabled={sampleIndex === sampleIndex.length - 1}
-        >&rarr;</button>
+        {/* AUDIO CONTROLS */}
+        <audio 
+          src={samples[sampleIndex].s3_location}
+          className={classes.player}
+          preload="auto" 
+          controls
+          controlsList="nodownload"
+        />
 
-    </div>
+        {/* DOT STEPPER NAV */}
+        <MobileStepper
+          className={classes.stepper}
+          variant={(samples.length < 10) ? "dots" : "progress"}
+          steps={samples.length}
+          position="static"
+          activeStep={sampleIndex}
 
-    <audio 
-      src={samples[sampleIndex].s3_location}
-      className="player"
-      preload="auto" 
-      controls
-      controlsList="nodownload"
-    />
-  </>)
-  
+          nextButton={
+            <Button
+              classes={{
+                root: classes.button,
+                disabled: classes.disabled,
+              }}
+              size="small"
+              onClick={handleNext}
+              disabled={sampleIndex === (samples.length - 1)}>
+              Next
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            </Button>}
+
+          backButton={
+            <Button
+            classes={{
+              root: classes.button,
+              disabled: classes.disabled,
+            }}
+              size="small"
+              onClick={handleBack}
+              disabled={sampleIndex === 0}>
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+              Back
+            </Button>}
+        />
+      </CardActions>
+    </Card>
+  )
 }
 
 export default AudioPlayer

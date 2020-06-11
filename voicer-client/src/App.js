@@ -48,12 +48,47 @@ function App() {
         },
 
         overrides: {
+          MuiCardActions: {
+            spacing: {
+              '& > :not(:first-child)': {
+                marginLeft: 0,
+              },
+            },
+          },
+          MuiCardContent: {
+            root: {
+              padding: 8,
+              '&:last-child': {
+                paddingBottom: 8,
+              },
+            },
+            
+          },
+          MuiLinearProgress: {
+            barColorPrimary: {
+              backgroundColor: 'rgba(255, 167, 112, 1)',
+            },
+          },
           MuiMenu: {
             paper: {
               backgroundColor: '#ffa770',
             },
             list: {
               color: '#063242',
+            },
+          },
+          MuiMobileStepper: {
+            root: {
+              backgroundColor: '#375b6d',
+            },
+            dot: {
+              backgroundColor: 'rgba(255, 167, 112, 0.5)',
+            },
+            dotActive: {
+              backgroundColor: 'rgba(255, 167, 112, 1)',
+            },
+            progress: {
+              backgroundColor: 'rgba(255, 167, 112, 0.5)',
             },
           },
         },

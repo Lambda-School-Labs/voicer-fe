@@ -65,13 +65,19 @@ const RenderMenu = ({ anchorEl, menuId, handleMenuClose }) => {
 					</MenuItem>
 				</>
 			) : (
-				<LogRegFields
-				register={loginRegister}
-				loginRegisterHandler={loginRegisterHandler}
-				setLoginRegister={setLoginRegister} />
+				<>
+					<hr />
+
+					<LogRegFields
+					register={loginRegister}
+					loginRegisterHandler={loginRegisterHandler}
+					setLoginRegister={setLoginRegister} />
+				</>
 			)}
 		</Menu>
 	)
 }
 
 export default RenderMenu
+
+

@@ -77,18 +77,7 @@ const NavBar = (props) => {
                 <MenuIcon />
               </IconButton>
             </Grid>
-
-            <Grid item xs={1} className={classes.sectionMobile}>
-              <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </Grid>
+            
           </Grid>
         </Container>
       </AppBar>

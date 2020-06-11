@@ -4,6 +4,8 @@ import { DataContext } from "../../context/DataContext"
 import axios from "axios"
 import VoiceItem from "./VoiceItem"
 
+import useStyles from './VoiceStyle'
+
 export default function Voice() {
   const [nameMatchesDB, setNameMatchesDB] = useState(true)
   const [data, setData] = useState([])
@@ -13,6 +15,7 @@ export default function Voice() {
   const { token, url } = useContext(DataContext)
 
   const displayName = useParams().displayName
+  const classes = useStyles()
 
   useEffect(() => {
     if (displayName) {
@@ -56,7 +59,7 @@ export default function Voice() {
   }, [voiceSearch])
 
   return (
-    <section className="voice">
+    <section className={classes.voicePage}>
       {!nameMatchesDB && displayName !== undefined && (
         <article className="error">
           The Display Name you specified is either unavailable, or doesn't exist
