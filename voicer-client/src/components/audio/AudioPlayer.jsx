@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import AttributeForm from "../voice/AttributeForm"
-
+import AttributeForm from "./AttributeForm"
 
 const AudioPlayer = ({samples, crud}) => {
 
