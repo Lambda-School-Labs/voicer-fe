@@ -3,9 +3,16 @@ import axios from "axios"
 import { DataContext } from "../../context/DataContext"
 import { InputGroup, FormControl } from "react-bootstrap"
 import Tag from './Tag'
+import { useEffect } from "react"
 
 const AttributeForm = ({proptags, id, crud}) => {
   const [tags, setTags] = useState(proptags)
+
+  console.log(proptags)
+
+  useEffect(() => {
+    setTags(proptags)
+  },[proptags])
 
   const { url } = useContext(DataContext)
 
