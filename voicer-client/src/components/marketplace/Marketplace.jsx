@@ -5,10 +5,6 @@ import axios from "axios"
 import JobsCard from "./JobsCard"
 
 import useStyles from './MarketPlaceStyle'
-// import { jobs } from "../../fakedata/jobs"
-import AddJobForm from "../addJobForm/AddJobForm"
-
-import Hero from "../hero/Hero"
 
 export default function Marketplace(props) {
   const [jobMatchesDB, setJobMatchesDB] = useState(true)

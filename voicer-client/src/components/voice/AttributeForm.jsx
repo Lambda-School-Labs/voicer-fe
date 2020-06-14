@@ -45,36 +45,33 @@ const AttributeForm = ({proptags, id, crud}) => {
     <>
 
       {crud 
-      ?
-        (
+      ? (
         <form onSubmit={stopSubmit}>
-        <div className="container">
-          <div className="tag-container">
-            {tags.map((tag) => (
-              <Tag name={tag} crud={crud} id={id} />
-            ))}
-            <InputGroup className="mb-3 tags-text">
-              <FormControl
-                // {...tagsInput}
-                onKeyUp={makeTag}
-                className="tag-input"
-              />
-            </InputGroup>
+          <div className="container">
+            <div className="tag-container">
+              {tags.map((tag) => (
+                <Tag name={tag} crud={crud} id={id} />
+              ))}
+              <InputGroup className="mb-3 tags-text">
+                <FormControl
+                  // {...tagsInput}
+                  onKeyUp={makeTag}
+                  className="tag-input"
+                />
+              </InputGroup>
+            </div>
           </div>
-        </div>
-        <button type="submit" onClick={handleSubmit}>
-          Add Tags to Profile
-        </button>
-      </form>
+          <button type="submit" onClick={handleSubmit}>
+            Add Tags to Profile
+          </button>
+        </form>
+        ):( <></>
+        // <div className="tag-container">
+        //   {tags.map((tag) => (
+        //     <Tag name={tag}  />
+        //   ))}
+        // </div>
         )
-      :
-    
-      
-      <div className="tag-container">
-      {tags.map((tag) => (
-              <Tag name={tag}  />
-            ))}
-      </div>
       }
     </>
   )

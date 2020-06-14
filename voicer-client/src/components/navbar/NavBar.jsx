@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
-import MoreIcon from '@material-ui/icons/MoreVert'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 
@@ -34,10 +33,6 @@ const NavBar = (props) => {
   const handleMenuClose = () => {
     setAnchorEl(null)
     handleMobileMenuClose()}
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget)}
-
 
   return (
     <header>

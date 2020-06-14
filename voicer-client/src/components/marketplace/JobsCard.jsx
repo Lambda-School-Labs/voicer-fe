@@ -52,13 +52,13 @@ const JobsCard = ({ token, data }) => {
 
       <Card className={classes.midCard}>
         <CardContent className={classes.jobBody}>
-          {/* <Avatar className={classes.jobImage} alt={} src={} /> */}
-          <div>
+          <Avatar className={classes.jobImage} alt={data.display_name} src={data.avatar} />
+          {/* <div>
             <img
               className={classes.jobImage}
               src={`https://picsum.photos/id/${data.id}/87/87?grayscale`}
               alt="Stock image for beautification"/>
-          </div>
+          </div> */}
           <div className={classes.jobInfo}>
             <Typography variant="body1" >This job pays ${data.payrate}/hour</Typography>
             <Typography variant="body2" >Job poster: {data.creator_id}</Typography>

@@ -4,6 +4,7 @@ import AudioPlayer from "../audio/AudioPlayer"
 import EditProfile from "./EditProfile"
 import AudioUploader from "../audio/AudioUploader"
 import AddJobForm from "../addJobForm/AddJobForm"
+import AttributeForm from "./AttributeForm"
 
 import useStyles from './VoiceStyle'
 import Card from '@material-ui/core/Card'
@@ -54,63 +55,65 @@ const VoiceItem = ({ data, token, bio, currentDisplayName }) => {
       )}
     </Card>
   ) : (
-    <Card className={classes.profileCard}>
-      {crud && (
-        <button
-          onClick={(e) => {
-            e.preventDefault()
-            setEdit(!edit)
-          }}
-        >
-          Edit My Info
-        </button>
-      )}
+    <>
+      <Card className={classes.profileCard}>
+        {crud && (
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              setEdit(!edit)
+            }}
+          >
+            Edit My Info
+          </button>
+        )}
 
-      <CardContent className={classes.profileRow}>
-        <CardContent className={classes.profileHeader}>
-          <Avatar
-            className={classes.profileAvatar}
-            alt={data.display_name}
-            src={data.avatar}
-          />
-
-          <CardContent className={classes.profileInfo}>
-
-            <Chip 
-              label={data.display_name}
-              color="secondary"
-              classes={{
-                label: classes.displayName
-              }}
+        <CardContent className={classes.profileRow}>
+          <CardContent className={classes.profileHeader}>
+            <Avatar
+              className={classes.profileAvatar}
+              alt={data.display_name}
+              src={data.avatar}
             />
 
-            <Rating name="read-only" value={data.rating} readOnly />
+            <CardContent className={classes.profileInfo}>
 
-            <Typography variant="body2" color="secondary">
-              Jobs Completed: {data.jobsCompleted}
-            </Typography>
+              <Chip 
+                label={data.display_name}
+                color="secondary"
+                classes={{
+                  label: classes.displayName
+                }}
+              />
 
-            {bio && <button>Invite to Apply</button>}
+              <Rating name="read-only" value={data.rating} readOnly />
+
+              <Typography variant="body2" color="secondary">
+                Jobs Completed: {data.jobsCompleted}
+              </Typography>
+
+              {bio && <button>Invite to Apply</button>}
+            </CardContent>
+          </CardContent>
+
+          <CardContent className={classes.contain}>
+              {data.samples[0] !== undefined && (
+                <AudioPlayer samples={data.samples} />
+              )}
           </CardContent>
         </CardContent>
 
-        <CardContent className={classes.contain}>
-            {data.samples[0] !== undefined && (
-              <AudioPlayer samples={data.samples} />
-            )}
-        </CardContent>
-      </CardContent>
 
+        {bio && (
+          <div className="profileBio">
+            <p>{data.bio}</p>
+          </div>
+        )}
+      </Card>
       {crud && <AudioUploader />}
       {crud && <AddJobForm />}
       {crud && <AttributeForm />}
-
-      {bio && (
-        <div className="profileBio">
-          <p>{data.bio}</p>
-        </div>
-      )}
-    </Card>
+    </>
   )
 }
 

@@ -2,9 +2,6 @@ import React from 'react'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import IconButton from '@material-ui/core/IconButton'
-import Badge from '@material-ui/core/Badge'
-import MailIcon from '@material-ui/icons/Mail'
-import NotificationsIcon from '@material-ui/icons/Notifications'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 
 const RenderMobileMenu = ({ mobileMoreAnchorEl, mobileMenuId, handleMobileMenuClose, handleProfileMenuOpen }) => {
