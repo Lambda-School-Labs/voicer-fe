@@ -16,6 +16,12 @@ export default function Voice() {
   const displayName = useParams().displayName
 
   useEffect(() => {
+    setSearchTags(`?tag=${voiceSearch.split(" ")}`)
+    console.log(searchTags)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [voiceSearch])
+
+  useEffect(() => {
     if (displayName) {
       console.log("there is a param")
       axios
@@ -39,9 +45,11 @@ export default function Voice() {
       axios
         .get(`${url}/api/users${searchTags}`)
         .then((result) => {
-          setData(result.data)
-          //console.log(data);
 
+          setData(result.data)
+          
+          
+          // add res here
           setNameMatchesDB(false)
         })
         .catch((err) => {
@@ -52,11 +60,7 @@ export default function Voice() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTags])
 
-  useEffect(() => {
-    setSearchTags(`?tag=${voiceSearch.split(" ")}&strict=${strict}`)
-    console.log(searchTags)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [voiceSearch])
+
 
   return (
     <section className="voice">
