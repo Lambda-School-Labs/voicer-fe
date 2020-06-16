@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTheme } from '@material-ui/core/styles'
+import AttributeForm from './AttributeForm'
 
 import useStyles from '../voice/VoiceStyle'
 import Card from '@material-ui/core/Card'
@@ -55,6 +56,8 @@ const AudioPlayer = ({samples}) => {
           ))
         }
       </CardContent>
+
+      <AttributeForm />
 
       <CardActions className={classes.controls}>
 

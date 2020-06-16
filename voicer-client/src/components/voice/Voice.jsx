@@ -24,6 +24,7 @@ export default function Voice() {
       axios
         .get(`${url}/api/users?display_name=${displayName}`)
         .then((result) => {
+          console.log('XXXXXXXXXXXXXX', result.data)
           setData(result.data)
 
           if (result.data[0]) {

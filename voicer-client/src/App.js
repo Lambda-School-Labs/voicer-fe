@@ -71,10 +71,10 @@ function App() {
           },
           MuiMenu: {
             paper: {
-              backgroundColor: '#ffa770',
+              backgroundColor: '#5f7b8a',
             },
             list: {
-              color: '#063242',
+              color: '#fffff4',
             },
           },
           MuiMobileStepper: {

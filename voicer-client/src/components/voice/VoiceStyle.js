@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
+	root: {
+		backgroundColor: theme.palette.primary.dark,
+    	width: theme.breakpoints.width('sm'),
+	},
 	voicePage: {
 		padding: theme.spacing(12, 0, 6),
 		backgroundColor: theme.palette.primary.dark,
@@ -13,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
 	profileCard: {
 		width: theme.breakpoints.width('sm'),
 		margin: theme.spacing(3),
+		backgroundColor: theme.palette.primary.light,
+		display: 'flex',
+	},
+	crudCard: {
+		width: theme.breakpoints.width('sm'),
 		backgroundColor: theme.palette.primary.light,
 		display: 'flex',
 	},

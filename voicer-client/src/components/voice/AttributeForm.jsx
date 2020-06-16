@@ -84,7 +84,7 @@ const AttributeForm = ({proptags, id, crud}) => {
       :
 
       <div className="tag-container">
-      {tags.map((tag) => (
+      {tags && tags.map((tag) => (
               <Tag name={tag}  />
             ))}
       </div>
@@ -107,7 +107,10 @@ const Tag = (props) => {
     const i = props.tags.indexOf(deletedTag)
 
     const remove = (li, index) => {
-      return [...props.tags.slice(0,index), ...props.tags.slice(index+1, props.tags.length)]
+      return [
+        ...props.tags.slice(0,index),
+        ...props.tags.slice(index+1, props.tags.length)
+      ]
     }
   
     props.setTags(remove(props.tags, i))
