@@ -4,7 +4,6 @@ import { DataContext } from "../../context/DataContext"
 import AudioPlayer from "../audio/AudioPlayer"
 import AudioUploader from '../audio/AudioUploader'
 import AddJobForm from '../addJobForm/AddJobForm'
-import AttributeForm from '../audio/AttributeForm'
 
 import PropTypes from 'prop-types'
 import SwipeableViews from 'react-swipeable-views'
