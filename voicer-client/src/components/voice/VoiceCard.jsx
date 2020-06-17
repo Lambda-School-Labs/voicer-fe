@@ -16,49 +16,54 @@ const VoiceCard = ({ data, token, bio, currentDisplayName }) => {
 
 	return (
 		<Card className={classes.profileCard}>
-			<CardContent className={classes.profileRow}>
-				<CardContent className={classes.profileHeader}>
-					<Avatar
-						className={classes.profileAvatar}
-						alt={data.display_name}
-						src={data.avatar}
-					/>
-
-					<CardContent className={classes.profileInfo}>
-
-						<Chip 
-							label={data.display_name}
-							color="secondary"
-							classes={{
-								label: classes.displayName
-							}}
+			<div 
+			className={classes.conWrap}
+			>
+				<div className={classes.profileRow}>
+					<CardContent className={classes.profileHeader}>
+						<Avatar
+							className={classes.profileAvatar}
+							alt={data.display_name}
+							src={data.avatar}
 						/>
 
-						<Rating name="read-only" value={data.rating} readOnly />
+						<CardContent className={classes.profileInfo}>
 
-						<Typography variant="body2" color="secondary">
-							Jobs Completed: {data.jobsCompleted}
-						</Typography>
+							<Chip 
+								label={data.display_name}
+								color="secondary"
+								classes={{
+									label: classes.displayName
+								}}
+							/>
 
-						{bio && <button>Invite to Apply</button>}
+							<Rating name="read-only" value={data.rating} readOnly />
+
+							<Typography variant="body2" color="secondary">
+								Jobs Completed: {data.jobsCompleted}
+							</Typography>
+
+							{bio && <button>Invite to Apply</button>}
+						</CardContent>
 					</CardContent>
-				</CardContent>
 
-				<CardContent className={classes.contain}>
-					{data.samples[0] !== undefined && (
-						<AudioPlayer samples={data.samples} />
-					)}
-				</CardContent>
-			</CardContent>
+					<CardContent className={classes.contain}>
+						{data.samples[0] !== undefined && (
+							<AudioPlayer samples={data.samples} />
+						)}
+					</CardContent>
 
+				</div>
 
-			{bio && (
-				<Card className="profileBio">
-					<Typography>
-						{data.bio}
-					</Typography>
-				</Card>
-			)}
+				{bio && (
+					<Card className={classes.bio}>
+						<Typography>
+							{data.bio}
+						</Typography>
+					</Card>
+				)}
+			</div>
+
 		</Card>
 	)
 }

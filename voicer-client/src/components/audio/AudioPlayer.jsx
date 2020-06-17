@@ -14,7 +14,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 
 
-const AudioPlayer = ({samples}) => {
+const AudioPlayer = ({samples, crud}) => {
   const classes = useStyles()
   const theme = useTheme()
 
@@ -57,7 +57,11 @@ const AudioPlayer = ({samples}) => {
         }
       </CardContent>
 
-      <AttributeForm />
+      <AttributeForm
+        crud={crud}
+        proptags={samples[sampleIndex].tags}
+        id={samples[sampleIndex].id}
+      />
 
       <CardActions className={classes.controls}>
 

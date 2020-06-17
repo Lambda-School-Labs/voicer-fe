@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	profileCard: {
 		width: theme.breakpoints.width('sm'),
 		margin: theme.spacing(3),
+		padding: theme.spacing(1),
 		backgroundColor: theme.palette.primary.light,
 		display: 'flex',
 	},
@@ -25,8 +26,14 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.primary.light,
 		display: 'flex',
 	},
+	conWrap: {
+		display: 'flex',
+		flexDirection: 'column',
+		width: '100%',
+	},
 	profileRow: {
 		width: '100%',
+		margin: theme.spacing(0),
 		display: 'flex',
 		// alignItems: 'center',
 		justifyContent: 'space-between',
@@ -48,6 +55,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 	contain: {
 		width: '100%',
+	},
+	bio: {
+		margin: theme.spacing(1),
+		padding: theme.spacing(2, 3),
+		color: theme.palette.common.white,
+		backgroundColor: theme.palette.primary.dark,
+		borderRadius: theme.shape.borderRadius,	
 	},
 	displayName: {
 		color: theme.palette.primary.dark,
