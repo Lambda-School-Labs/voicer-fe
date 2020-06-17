@@ -3,6 +3,7 @@ import axios from "axios"
 import { DataContext } from "../../context/DataContext"
 
 const Tag = (props) => {
+    console.log(props)
     const {url} = useContext(DataContext)  
   
     const deleteTag = (e) => {

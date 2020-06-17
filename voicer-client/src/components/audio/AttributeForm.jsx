@@ -84,7 +84,7 @@ const AttributeForm = ({proptags, id, crud}) => {
         )
       :
       <div className="tag-container">
-      {tags.map((tag) => (
+      {tags && tags.map((tag) => (
               <Tag name={tag}  />
             ))}
       </div>
