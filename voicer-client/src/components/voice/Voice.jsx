@@ -20,7 +20,8 @@ export default function Voice() {
 
   useEffect(() => {
     setSearchTags(`?tag=${voiceSearch.split(" ")}`)
-    console.log(searchTags)
+
+    console.log("SEARCHTAGS", searchTags)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceSearch])
 
@@ -52,8 +53,6 @@ export default function Voice() {
 
           setData(result.data)
           
-          
-          // add res here
           setNameMatchesDB(false)
         })
         .catch((err) => {

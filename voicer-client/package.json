@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --detectOpenHandles --forceExit",
+    "test": "react-scripts test --detectOpenHandles --forceExit --coverage --watchAll", 
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
   },
