@@ -28,115 +28,73 @@ Christopher Quinn
 [<img src="https://avatars1.githubusercontent.com/u/3174281?s=460&v=4" width = "200" />](https://github.com/xerillius)
 
 
-Mary Clayton
-[<img src="https://avatars0.githubusercontent.com/u/52017102?s=460&u=3d6d943ad87af37a80ad0b80a67f2cfacee8c663&v=4" width = "200" />](https://github.com/mary-clayton)
-
-
 
 
 ## Project Overview
 
-https://trello.com/b/bSVcWjZF/voicer
+Trello Board: https://trello.com/b/bSVcWjZF/voicer
 
-https://www.notion.so/Voicer-3276d8fdf5df414299411e3e393167cd
+Notion documentation: https://www.notion.so/Voicer-3276d8fdf5df414299411e3e393167cd
 
+## Mission
 To create a voice over marketplace environment where users can post jobs, connect with reliable voice-over talent, offer a file delivery service between project owners and talent, and facilitate the financial transactions between the two parties.  
 
 
 ### Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+-    Users can create unique profiles that showcase their creative talent. 
+-    Users can upload audio samples, and assign tags to individual audio samples to enhance searchability
+-    Users can post jobs and "hire" individuals that have applied
+-    Users can browse user profile snapshots, listening to audio samples in a Twitter-like format
 
 ## Tech Stack
 
+
 ### Front end built using:
+The Voicer-App tech stack is as follows: 
+- React for front-end framework 
+- MaterialUI for styling/css
+- @testing-library/react for unit testing
+- Postgres for the database
+- Heroku for backend deployment
+- Netlify for frontend deployment
+- AWS for asset storage (audio files)
 
 #### React
 
-Why did you choose this framework?
-
--    well documented
--    team is familiar with it
--    does what we want it to do without any issues
--    very well maintained
+React is a well supported, fully featured front end framework. We use Context for state management (instead of redux) since our global state schema is relatively simple (i.e.we think using redux for this application would be overkill). 
 
 #### Node Sass
 
-Why did you choose this framework?
-
--    easy to use with react
+We started the project using Node Sass and Bootstrap, but will merge/migrate to MaterialUI in the near future. 
 
 #### axios
 
-Why did you choose this framework?
+-    We use axios for API calls. The framework is lightweight and simple, and meets all current needs of the project. 
 
--    well documented
--    team is familiar with it
 
 #### Front end deployed to Netlify
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/voicer-be) built using: 
 
-#### 🚫 back end framework goes here
+-    Postgres for database
+-    Heroku for backend deployment
+-    AWS for storage of audio samples
 
--    point one
--    point two
--    point three
-
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
 
 # APIs
 
 ## 2️⃣ Authentication API here
 
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+The authentication API is a gatekeeper function that is embedded in Provider.DataContext. We check if there's a token, and whether that token is still valid. While the token is valid, users remain logged in. When a user logs out or the token is deleted, the token is deleted. 
 
 ## 2️⃣ Payment API here
 
-🚫Replace text below with a description of the API
+There is currently no payments API for Voicer-App. 
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+## 3️⃣ B&W computer image loader API
 
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
-
-In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
-
-🚫These are just examples, replace them with the specifics for your app
-
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+We use an API for "random" image generation on the Jobs/Marketplace component (mostly to make advertised jobs a bit more visually appealing.) Documentation for the API can be found at: https://picsum.photos
 
 # 5️⃣ Content Licenses
 
@@ -144,29 +102,31 @@ In order for the app to function correctly, the user must set up their own envir
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+
+| rings.svg      | Material Icons      | [MIT](material.io)                             |
 
 # 4️⃣ Testing
 
-🚫Document what you used for testing and why
+We use @testing-library/react for unit testing. This library had the advantage of working tightly with React and not needing additional setup. 
+
+We expect a minimum threshold of 30% for test coverage. 
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+To install the required directories for this project: 
+
+1. Clone the master branch to your local device
+2. CD into `/voicer-client`
+3. From the terminal, run `npm i` or `yarn install`
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
     * start - starts the production server after a build is created
     * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
 
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change. The best way to make a suggestion is to contribute to the Trello Board. 
 
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
@@ -202,4 +162,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/voicer-be/blob/master/README.md) for details on the backend of our project.
