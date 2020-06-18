@@ -66,7 +66,7 @@ export default function Voice() {
 
 
   return (
-    <section className={classes.voicePage}>
+    <section data-testid='voice' className={classes.voicePage}>
       {!nameMatchesDB && displayName !== undefined && (
         <article className="error">
           The Display Name you specified is either unavailable, or doesn't exist
@@ -99,7 +99,7 @@ export default function Voice() {
               type="radio"
               name="search"
               value="strict"
-              checked
+              defaultChecked
               onClick={() => {
                 setStrict(true)
               }}

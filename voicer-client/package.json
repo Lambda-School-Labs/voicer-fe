@@ -55,6 +55,7 @@
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
+      "!**/serviceWorker.js",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/__tests__/**"

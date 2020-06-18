@@ -65,6 +65,7 @@ export default function Marketplace(props) {
   -------------------------------------------------------------
   */
 
+ console.log("XXXXXXXAAAAAAAAAAAAAASSSSSSSSSSSSSS", jobId)
   let display
   if (jobId === undefined) {
     display = <MultipleJobs data={data} />
@@ -77,13 +78,13 @@ export default function Marketplace(props) {
   }
 
   return (
-    <section className={classes.marketplace}>
+    <section data-testid='marketplace' className={classes.marketplace}>
       {display}
     </section>
   )
 }
 
-const JobDoesntExist = () => {
+export const JobDoesntExist = () => {
   return (
     <article>
       The job you are looking for does not exist
@@ -91,7 +92,7 @@ const JobDoesntExist = () => {
   )
 }
 
-const MultipleJobs = (props) => {
+export const MultipleJobs = (props) => {
   return (
     <>
       {props.data.map((job) => (
@@ -103,7 +104,7 @@ const MultipleJobs = (props) => {
   )
 }
 
-const SingleJob = (props) => {
+export const SingleJob = (props) => {
   console.log(props)
   return (
     <>
