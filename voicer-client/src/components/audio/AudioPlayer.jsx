@@ -1,51 +1,116 @@
-import React, {useState} from 'react'
-import AttributeForm from "./AttributeForm"
+import React, { useState } from 'react'
+import { useTheme } from '@material-ui/core/styles'
+import AttributeForm from './AttributeForm'
+
+import useStyles from '../voice/VoiceStyle'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
+import MobileStepper from '@material-ui/core/MobileStepper'
+import Button from '@material-ui/core/Button'
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+
 
 const AudioPlayer = ({samples, crud}) => {
+  const classes = useStyles()
+  const theme = useTheme()
 
   const [sampleIndex, setSampleIndex] = useState(0)
-  const [sampleLength] = useState(samples.length)
 
-  const nexthandler = (e) => {
+  const handleNext = (e) => {
     e.preventDefault()
-    sampleIndex === (sampleLength - 1) ? setSampleIndex(0) : setSampleIndex(sampleIndex+1)
-  } 
+    setSampleIndex(sampleIndex + 1)} 
 
-  const prevhandler = (e) => {
+  const handleBack = (e) => {
     e.preventDefault()
-    sampleIndex === 0 ? setSampleIndex(sampleLength - 1) : setSampleIndex(sampleIndex - 1)
-  } 
-console.log("Samples", samples)
-  return(<>
-    <div className="title">
-      <p>{`${sampleIndex+1}/${sampleLength} ${samples[sampleIndex].title}`} <span>{crud ? <i className="material-icons">add</i> : ""}</span></p>
-    </div>
-    <div className="carousel">
-        <button
-          onClick={(e)=>prevhandler(e)}
-        >&larr;</button>
-      <div className="description">
-        <p>{samples[sampleIndex].description}</p>
-        
-      </div>
-      <div className="attributes-container">
-        <AttributeForm crud={crud} proptags={samples[sampleIndex].tags} id={samples[sampleIndex].id}/>
-      {/* {samples[sampleIndex].tags.map(t => <span className='attribute'>{t}</span>)} */}
-      </div>
+    setSampleIndex(sampleIndex - 1)}
 
-        <button
-          onClick={(e)=>nexthandler(e)}
-        >&rarr;</button>
-    </div>
-    <audio 
-      src={samples[sampleIndex].s3_location}
-      className="player"
-      preload="auto" 
-      controls
-      controlsList="nodownload"
-    />
-  </>)
-  
+  console.log(samples)
+
+  return(
+    <Card className={classes.sampleCard} >
+
+      {/* TITLE */}
+      <Card classes={{ root: classes.sampleTitle }}>
+        <Typography variant="p" component="h3">
+          {`${samples[sampleIndex].title}`}
+        </Typography>
+      </Card>
+
+      {/* TAGS */}
+      <CardContent className={classes.tags}>
+        {samples[sampleIndex].tags[0] !== undefined && 
+          samples[sampleIndex].tags.map(tag => (
+            <Chip
+              classes={{
+                root: classes.chip,
+                label: classes.chip,
+              }}
+              label={tag}
+              key={tag}
+              color='secondary'
+            />
+          ))
+        }
+      </CardContent>
+
+      <AttributeForm
+        crud={crud}
+        proptags={samples[sampleIndex].tags}
+        id={samples[sampleIndex].id}
+      />
+
+      <CardActions className={classes.controls}>
+
+        {/* AUDIO CONTROLS */}
+        <audio 
+          src={samples[sampleIndex].s3_location}
+          className={classes.player}
+          preload="auto" 
+          controls
+          controlsList="nodownload"
+        />
+
+        {/* DOT STEPPER NAV */}
+        <MobileStepper
+          className={classes.stepper}
+          variant={(samples.length < 10) ? "dots" : "progress"}
+          steps={samples.length}
+          position="static"
+          activeStep={sampleIndex}
+
+          nextButton={
+            <Button
+              classes={{
+                root: classes.button,
+                disabled: classes.disabled,
+              }}
+              size="small"
+              onClick={handleNext}
+              disabled={sampleIndex === (samples.length - 1)}>
+              Next
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            </Button>}
+
+          backButton={
+            <Button
+            classes={{
+              root: classes.button,
+              disabled: classes.disabled,
+            }}
+              size="small"
+              onClick={handleBack}
+              disabled={sampleIndex === 0}>
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+              Back
+            </Button>}
+        />
+      </CardActions>
+    </Card>
+  )
 }
 
 export default AudioPlayer

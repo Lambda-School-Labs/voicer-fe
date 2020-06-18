@@ -65,7 +65,13 @@ const AttributeForm = ({proptags, id, crud}) => {
         <div className="container">
           <div className="tag-container">
             {tags.map((tag) => (
-              <Tag name={tag} crud={crud} id={id} tags={tags} setTags={setTags} proptags={proptags} />
+              <Tag
+                name={tag}
+                crud={crud} id={id}
+                tags={tags}
+                setTags={setTags}
+                proptags={proptags}
+              />
             ))}
             <InputGroup className="mb-3 tags-text">
               <FormControl

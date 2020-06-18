@@ -4,6 +4,8 @@ import { DataContext } from "../../context/DataContext"
 import axios from "axios"
 import VoiceItem from "./VoiceItem"
 
+import useStyles from './VoiceStyle'
+
 export default function Voice() {
   const [nameMatchesDB, setNameMatchesDB] = useState(true)
   const [data, setData] = useState([])
@@ -14,6 +16,7 @@ export default function Voice() {
   const { token, url } = useContext(DataContext)
 
   const displayName = useParams().displayName
+  const classes = useStyles()
 
   useEffect(() => {
     setSearchTags(`?tag=${voiceSearch.split(" ")}`)
@@ -28,6 +31,7 @@ export default function Voice() {
       axios
         .get(`${url}/api/users?display_name=${displayName}`)
         .then((result) => {
+          console.log('XXXXXXXXXXXXXX', result.data)
           setData(result.data)
 
           if (result.data[0]) {
@@ -62,7 +66,7 @@ export default function Voice() {
 
 
   return (
-    <section className="voice">
+    <section data-testid='voice' className={classes.voicePage}>
       {!nameMatchesDB && displayName !== undefined && (
         <article className="error">
           The Display Name you specified is either unavailable, or doesn't exist
@@ -95,7 +99,7 @@ export default function Voice() {
               type="radio"
               name="search"
               value="strict"
-              checked
+              defaultChecked
               onClick={() => {
                 setStrict(true)
               }}

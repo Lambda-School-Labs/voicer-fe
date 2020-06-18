@@ -3,9 +3,9 @@
 :root {
   --voicer-orange: #ff934f;
   --voicer-star-on: #ffff00;
-  --bg: #223843;
+  --bg: #263f4c;
   --bg-rgb: 34, 56, 67;
-  --bg-main: #242424;
+  --bg-main: #263f4c;
   --bg-accent: #535353;
   --bg-button: #686868;
   --button-selected: #009aec;
@@ -61,18 +61,19 @@ body {
 
 #root {
   width: 100%;
-  max-width: 1440px;
+  max-width: 100vw;
 }
 
 .navbar {
-  background-color: var(--bg);
+  width: 100%;
+  max-width: 80vw;
   height: var(--nav-size);
   padding: 0 1rem;
-  border-bottom: var(--border);
+  // border-bottom: var(--border);
   display: flex;
   align-items: center;
   .logo {
-    width: 100px;
+    width: 5vw;
   }
   .navbar-nav {
     width: 100%;
@@ -181,6 +182,7 @@ body {
 .voice,
 .marketplace {
   margin: 0.5rem;
+  margin-top: 5.5rem;
   display: flex;
   // flex-wrap: nowrap;
   flex-direction: column;
@@ -219,40 +221,6 @@ body {
     }
 
     .profileBio {
-      margin: 0.5rem;
-      padding: 1rem;
-      background-color: var(--bg-main);
-      border: var(--border);
-      border-radius: var(--border-radius);
-      p {
-        text-align: center;
-      }
-    }
-  }
-  .jobCard {
-    max-width: 500px;
-    padding: 1rem;
-    background-color: var(--bg);
-    border-radius: var(--border-radius);
-    margin: 1rem 0px;
-    display: flex;
-    flex-direction: column;
-    .jobTitle {
-      text-align: center;
-    }
-    .jobBody {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      .jobImage {
-        .jobCardStockImage {
-          border-radius: 50%;
-        }
-      }
-      .jobInfo {
-      }
-    }
-    .jobDescription {
       margin: 0.5rem;
       padding: 1rem;
       background-color: var(--bg-main);

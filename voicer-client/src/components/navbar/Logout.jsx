@@ -1,21 +1,17 @@
 import React from 'react'
-import { ReactComponent as SignOut } from "../../images/sign-out-alt-light.svg"
 
 
-const Logout = ({setDropDown}) => {
+const Logout = () => {
   return(
-    <button
-      className="menu-item"
-      lefticon={SignOut}
+    <div
       onClick={(e) => {
         e.preventDefault()
-        setDropDown(false)
         localStorage.removeItem("token")
         window.location.href = "/"
       }}
     >
       Logout
-    </button>
+    </div>
   )
 }
 

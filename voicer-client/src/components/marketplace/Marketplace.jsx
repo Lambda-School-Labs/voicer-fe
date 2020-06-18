@@ -4,11 +4,14 @@ import { DataContext } from "../../context/DataContext"
 import axios from "axios"
 import JobsCard from "./JobsCard"
 
+import useStyles from './MarketPlaceStyle'
+
 export default function Marketplace(props) {
   const [jobMatchesDB, setJobMatchesDB] = useState(true)
   const [data, setData] = useState([])
   const { token, url, refreshApp } = useContext(DataContext)
 
+  const classes = useStyles()
   const jobId = useParams().jobId
 
   console.log(props)
@@ -62,6 +65,7 @@ export default function Marketplace(props) {
   -------------------------------------------------------------
   */
 
+ console.log("XXXXXXXAAAAAAAAAAAAAASSSSSSSSSSSSSS", jobId)
   let display
   if (jobId === undefined) {
     display = <MultipleJobs data={data} />
@@ -74,26 +78,25 @@ export default function Marketplace(props) {
   }
 
   return (
-    <section className="marketplace">
-      {/* <AddJobForm /> */}
+    <section data-testid='marketplace' className={classes.marketplace}>
       {display}
     </section>
   )
 }
 
-const JobDoesntExist = () => {
+export const JobDoesntExist = () => {
   return (
-    <article className="error">
+    <article>
       The job you are looking for does not exist
     </article>
   )
 }
 
-const MultipleJobs = (props) => {
+export const MultipleJobs = (props) => {
   return (
     <>
       {props.data.map((job) => (
-        <a className="jobLink" key={job.id} href={`/job/${job.id}`}>
+        <a key={job.id} href={`/job/${job.id}`}>
           <JobsCard data={job} />
         </a>
       ))}
@@ -101,7 +104,7 @@ const MultipleJobs = (props) => {
   )
 }
 
-const SingleJob = (props) => {
+export const SingleJob = (props) => {
   console.log(props)
   return (
     <>

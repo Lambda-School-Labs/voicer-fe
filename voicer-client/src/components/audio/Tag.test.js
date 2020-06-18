@@ -44,15 +44,15 @@ test('tag deletes on click to <i> tag', () => {
 
 })
 
-test('deletes', () => {
-    let setTags = (newTags) => { tags = newTags }
+// test('deletes', () => {
+//     let setTags = (newTags) => { tags = newTags }
 
-    const {getByText} = render(
-        <DataContext.Provider value={{ url }} >
-            <Tag name={tag} crud={crud} id={id} tags={tags} setTags={setTags} proptags={proptags} />
-        </DataContext.Provider>
-    )
+//     const {getByText} = render(
+//         <DataContext.Provider value={{ url }} >
+//             <Tag name={tag} crud={crud} id={id} tags={tags} setTags={setTags} proptags={proptags} />
+//         </DataContext.Provider>
+//     )
     
-    const element2 = getByText(/spanish/i)
-    expect(element2).not.toBeInTheDocument()
-})
+//     const element2 = getByText(/spanish/i)
+//     expect(element2).not.toBeInTheDocument()
+// })
