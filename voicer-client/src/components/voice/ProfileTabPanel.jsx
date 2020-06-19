@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { DataContext } from "../../context/DataContext"
+import React, { useState } from 'react'
+// import { DataContext } from "../../context/DataContext"
 
 import AudioPlayer from "../audio/AudioPlayer"
 import AudioUploader from '../audio/AudioUploader'
@@ -21,7 +21,7 @@ import Chip from '@material-ui/core/Chip'
 import Rating from '@material-ui/lab/Rating'
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props
+  const { children } = props
   const classes = useStyles()
   return (
     <Card className={classes.crudCard}>
@@ -48,7 +48,7 @@ export default function FullWidthTabs({ key, data, bio, currentDisplayName }) {
   const theme = useTheme()
   const [value, setValue] = useState(0)
 
-  const { token } = useContext(DataContext)
+  // const { token } = useContext(DataContext)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)

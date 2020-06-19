@@ -11,7 +11,7 @@ export default function Voice() {
   const [data, setData] = useState([])
   const [voiceSearch, setVoiceSearch] = useState("")
   const [searchTags, setSearchTags] = useState("")
-  const [strict, setStrict] = useState(true)
+  // const [strict, setStrict] = useState(true)
 
   const { token, url } = useContext(DataContext)
 
@@ -94,7 +94,7 @@ export default function Voice() {
               setVoiceSearch(e.target.value)
             }}
           />
-          <div>
+          {/* <div>
             <input
               type="radio"
               name="search"
@@ -117,7 +117,7 @@ export default function Voice() {
               }}
             />
             <label htmlFor="expansive">Expansive Search</label>
-          </div>
+          </div> */}
 
           {data.map((voice) => (
             <a key={voice.display_name} href={`/voice/${voice.display_name}`}>
