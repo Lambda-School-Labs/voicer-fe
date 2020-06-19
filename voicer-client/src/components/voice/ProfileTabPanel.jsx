@@ -8,7 +8,7 @@ import AddJobForm from '../addJobForm/AddJobForm'
 import PropTypes from 'prop-types'
 import SwipeableViews from 'react-swipeable-views'
 
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@material-ui/core/styles'
 import useStyles from './VoiceStyle'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
