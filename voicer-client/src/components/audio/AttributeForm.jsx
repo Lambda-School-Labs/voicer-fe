@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react"
 import axios from "axios"
 import { DataContext } from "../../context/DataContext"
-import { InputGroup, FormControl } from "react-bootstrap"
+import { InputGroup, FormControl, Button } from "react-bootstrap"
 import Tag from './Tag'
 import { useEffect } from "react"
+import "../../App.scss"
 
 const AttributeForm = ({proptags, id, crud}) => {
   const [tags, setTags] = useState(proptags)
@@ -73,19 +74,21 @@ const AttributeForm = ({proptags, id, crud}) => {
                 proptags={proptags}
               />
             ))}
-            <InputGroup className="mb-3 tags-text">
-              <FormControl
-                onKeyUp={makeTag}
-                className="tag-input"
-              />
-            </InputGroup>
+            <div>
+              <InputGroup className="mb-3 tags-text">
+                <FormControl
+                  onKeyUp={makeTag}
+                  className="tag-input"
+                />
+              </InputGroup>
+            </div>
+              <Button className="bigbutton" onClick={handleSubmit}>
+              Add Tags to Profile
+            </Button>
           </div>
         </div>
 
       </form>
-              <button onClick={handleSubmit}>
-              Add Tags to Profile
-            </button>
             </>
         )
       :
