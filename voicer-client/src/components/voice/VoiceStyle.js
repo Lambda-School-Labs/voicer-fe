@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 	},
 	profileCard: {
-		width: theme.breakpoints.width('sm'),
+		width: theme.breakpoints.width('md'),
 		margin: theme.spacing(3),
 		padding: theme.spacing(1),
 		backgroundColor: theme.palette.primary.light,
 		display: 'flex',
 	},
 	crudCard: {
-		width: theme.breakpoints.width('sm'),
+		width: theme.breakpoints.width('md'),
 		backgroundColor: theme.palette.primary.light,
 		display: 'flex',
 	},

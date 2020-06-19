@@ -19,6 +19,7 @@ const VoiceItem = ({ data, bio, currentDisplayName }) => {
 
   return crud ? (
     <FullWidthTabs
+      crud={crud}
       data={data}
       token={token}
       bio={bio}
