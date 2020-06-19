@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --detectOpenHandles --forceExit --coverage --watchAll", 
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
+    "coverage": "CI=true react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
   },
   "dependencies": {
     "@aeaton/react-prosemirror": "^0.22.1",
