@@ -43,7 +43,7 @@ function a11yProps(index) {
   }
 }
 
-export default function FullWidthTabs({ crud, key, data, bio, currentDisplayName }) {
+export default function FullWidthTabs({ crud, key, data, bio, currentDisplayName, reset }) {
   const classes = useStyles()
   const theme = useTheme()
   const [value, setValue] = useState(0)
@@ -128,7 +128,11 @@ export default function FullWidthTabs({ crud, key, data, bio, currentDisplayName
           <AudioUploader />
           <CardContent className={classes.contain}>
             {data.samples[0] !== undefined && (
-              <AudioPlayer crud={crud} samples={data.samples} />
+              <AudioPlayer
+                crud={crud}
+                samples={data.samples}
+                reset={reset}
+              />
             )}
           </CardContent>
         </TabPanel>

@@ -1,45 +1,22 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import axios from "axios"
 import { DataContext } from "../../context/DataContext"
-import { InputGroup, FormControl, Button } from "react-bootstrap"
+
 import Tag from './Tag'
-import { useEffect } from "react"
-import "../../App.scss"
 
-const AttributeForm = ({proptags, id, crud}) => {
-  const [tags, setTags] = useState(proptags)
+import useStyles from '../voice/VoiceStyle'
+import ChipInput from 'material-ui-chip-input'
 
-  console.log(proptags)
+const AttributeForm = ({ proptags, id, crud, reset }) => {
+  const [tags, setTags] = useState([])
+ 
+  const {url} = useContext(DataContext)
+  const classes = useStyles()
 
-  useEffect(() => {
-    setTags(proptags)
-  },[proptags])
-
-  const { url } = useContext(DataContext)
-
-  const makeTag = (e) => {
-    e.preventDefault()
-    if (e.key === "Enter") {
-      // if the tag is already in tags, don't do anything
-      if (tags.includes(e.target.value)) {
-        e.target.value = ""
-      } else {
-        setTags([...tags, e.target.value])
-        e.target.value = ""
-      }
-    }
-  }
-
-  const stopSubmit = (e) => {
-    e.preventDefault()
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (tags.length > 7 ) {
-      alert('Tags limited to 7 per sample, please delete some')
+  const handleSubmit = (tag) => {
+    if (tags.length > 6 ) {
+      alert('Tags limited to 6 per sample, please delete some')
     } else {
-      tags.forEach((tag) => {
         let obj = {
           id: id,
           title: tag
@@ -53,54 +30,55 @@ const AttributeForm = ({proptags, id, crud}) => {
           .catch((err) => {
             console.log(err)
           })
-      })
+          .finally(() => {
+            reset()
+          })
     }
   }
+
+  const deleteTag = (tag) => {
+      axios
+        .delete(`${url}/api/avs`, {data: {id:id, title:tag}} )
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          reset()
+        })
+  }
+
+  useEffect(() => {
+    setTags(proptags)
+  }, [proptags])
+
   return (
     <>
-      {crud 
-      ?
-        (
-          <>
-        <form onSubmit={stopSubmit}>
-        <div className="container">
-          <div className="tag-container">
-            {tags.map((tag) => (
-              <Tag
-                name={tag}
-                crud={crud} id={id}
-                tags={tags}
-                setTags={setTags}
-                proptags={proptags}
-              />
-            ))}
-            <div>
-              <InputGroup className="mb-3 tags-text">
-                <FormControl
-                  onKeyUp={makeTag}
-                  className="tag-input"
-                />
-              </InputGroup>
-            </div>
-              <Button className="bigbutton" onClick={handleSubmit}>
-              Add Tags to Profile
-            </Button>
-          </div>
+      {crud ? (
+        <>
+          <ChipInput
+            classes={{
+              root: classes.chip,
+              label: classes.chip,
+            }}
+            // inputValue={tags}
+            value={tags}
+            onAdd={handleSubmit}
+            onDelete={deleteTag}
+            color='secondary'
+          />
+        </>
+      ) : (
+        <div>
+          {tags && tags.map((tag) => (
+                <Tag name={tag}  />
+              ))}
         </div>
-
-      </form>
-            </>
-        )
-      :
-      <div className="tag-container">
-      {tags && tags.map((tag) => (
-              <Tag name={tag}  />
-            ))}
-      </div>
-      }
+      )}
     </>
   )
 }
-
 
 export default AttributeForm

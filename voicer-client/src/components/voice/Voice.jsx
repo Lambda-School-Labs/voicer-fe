@@ -11,12 +11,16 @@ export default function Voice() {
   const [data, setData] = useState([])
   const [voiceSearch, setVoiceSearch] = useState("")
   const [searchTags, setSearchTags] = useState("")
-  // const [strict, setStrict] = useState(true)
+  const [voiceReset, setVoiceReset] = useState(true)
 
   const { token, url } = useContext(DataContext)
 
   const displayName = useParams().displayName
   const classes = useStyles()
+
+  const voiceResetHandler = () => {
+    setVoiceReset(!voiceReset)
+  }
 
   useEffect(() => {
     setSearchTags(`?tag=${voiceSearch.split(" ")}`)
@@ -50,7 +54,7 @@ export default function Voice() {
       axios
         .get(`${url}/api/users${searchTags}`)
         .then((result) => {
-
+          console.log('XXXXXXXXXXXXXX', result.data)
           setData(result.data)
           
           setNameMatchesDB(false)
@@ -61,7 +65,7 @@ export default function Voice() {
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTags])
+  }, [searchTags, voiceReset])
 
 
 
@@ -81,6 +85,7 @@ export default function Voice() {
               bio={true}
               token={token}
               currentDisplayName={displayName}
+              reset={voiceResetHandler}
             />
           ))}
         </>
@@ -94,30 +99,6 @@ export default function Voice() {
               setVoiceSearch(e.target.value)
             }}
           />
-          {/* <div>
-            <input
-              type="radio"
-              name="search"
-              value="strict"
-              defaultChecked
-              onClick={() => {
-                setStrict(true)
-              }}
-            />
-            <label htmlFor="strict">Strict Search</label>
-          </div>
-
-          <div>
-            <input
-              type="radio"
-              name="search"
-              value="expansive"
-              onClick={() => {
-                setStrict(false)
-              }}
-            />
-            <label htmlFor="expansive">Expansive Search</label>
-          </div> */}
 
           {data.map((voice) => (
             <a key={voice.display_name} href={`/voice/${voice.display_name}`}>

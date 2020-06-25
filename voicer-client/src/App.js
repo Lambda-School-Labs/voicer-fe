@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 
+import cogotoast from 'cogo-toast'
+
 import GateKeeper from "./components/GateKeeper/GateKeeper"
 import NavBar from "./components/navbar/NavBar"
 import Marketplace from "./components/marketplace/Marketplace"
@@ -102,6 +104,7 @@ function App() {
 
   //global reset
   const refreshAppHandler = () => {
+    cogotoast.success('refresh')
     window.location.reload()
   }
   //end global reset
