@@ -5,9 +5,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --detectOpenHandles --forceExit --coverage --watchAll", 
+    "test": "react-scripts test --detectOpenHandles --forceExit --coverage --watchAll",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
+    "coverage": "CI=true react-scripts test --coverage --detectOpenHandles --forceExit --watchAll=false || true"
   },
   "dependencies": {
     "@aeaton/react-prosemirror": "^0.22.1",
@@ -24,6 +24,7 @@
     "cogo-toast": "^4.2.3",
     "jsonwebtoken": "^8.5.1",
     "material-icons": "^0.3.1",
+    "material-ui-chip-input": "^2.0.0-beta.2",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
     "node-sass": "^4.14.1",

@@ -3,7 +3,7 @@ import { DataContext } from "../../context/DataContext"
 import VoiceCard from './VoiceCard'
 import FullWidthTabs from "./ProfileTabPanel"
 
-const VoiceItem = ({ data, bio, currentDisplayName }) => {
+const VoiceItem = ({ data, bio, currentDisplayName, reset }) => {
 
   const [crud, setCrud] = useState(false)
 
@@ -24,6 +24,7 @@ const VoiceItem = ({ data, bio, currentDisplayName }) => {
       token={token}
       bio={bio}
       currentDisplayName={currentDisplayName}
+      reset={reset}
     />
   ) : (
     <VoiceCard
