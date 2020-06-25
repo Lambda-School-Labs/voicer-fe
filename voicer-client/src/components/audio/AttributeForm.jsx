@@ -19,7 +19,7 @@ const AttributeForm = ({ proptags, id, crud, reset }) => {
     } else {
         let obj = {
           id: id,
-          title: tag
+          title: tag.charAt(0).toUpperCase() + tag.slice(1)
         }
   
         axios
